@@ -1,0 +1,17 @@
+#err-coloane {
+  display: flex;
+  gap: 1.5rem;
+  border: 0.25rem solid var(--error);
+  border-radius: 0.5rem;
+  margin-bottom: var(--margin-2);
+  padding: var(--padding-1);
+  align-items: center;
+  justify-content: center;
+
+  color: var(--error);
+}
+
+#err-imag {
+  width: 3rem;
+  height: 3rem;
+}

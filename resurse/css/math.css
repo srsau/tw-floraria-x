@@ -1,0 +1,18 @@
+mi {
+  color: var(--culoare-1);
+  text-decoration: underline;
+}
+
+mn {
+  font-weight: 300;
+  color: var(--culoare-1);
+}
+
+mo {
+  font-weight: normal;
+  color: var(--highlight);
+}
+
+msup {
+  font-weight: bold;
+}

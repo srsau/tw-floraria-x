@@ -1,0 +1,284 @@
+$navbar-color: var(--culoare-1);
+$navbar-height: var(--height);
+$navbar-li-padding: 0.625rem;
+$box-shadow-select: inset 0 0 16px white;
+
+@mixin reset-ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+@mixin center-elements {
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  --height: 3rem;
+  height: $navbar-height;
+  background-color: $navbar-color;
+  color: var(--text);
+  z-index: 500;
+  position: relative;
+
+  a:visited {
+    color: unset;
+  }
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+.app-navbar {
+  @include reset-ul;
+  @include center-elements;
+  height: $navbar-height;
+  width: 100%;
+  background-color: inherit;
+
+  > li {
+    position: relative;
+    @include center-elements;
+    height: 100%;
+    width: fit-content;
+
+    &:hover .submeniu {
+      transition: transform 0.4s ease;
+      transform: scaleY(1);
+    }
+    > a {
+      @include center-elements;
+      width: 100%;
+      height: 100%;
+      padding-left: $navbar-li-padding;
+      padding-right: $navbar-li-padding;
+      transition: box-shadow 0.7s ease;
+
+      &:hover {
+        box-shadow: $box-shadow-select;
+      }
+    }
+
+    .home-text {
+      margin-left: 0.5rem;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.submeniu {
+  @include reset-ul;
+  position: absolute;
+  overflow: hidden;
+
+  transform: scaleY(0);
+  transform-origin: top;
+
+  padding: 0;
+  z-index: 1000;
+
+  min-width: 100%;
+  width: max-content;
+  top: $navbar-height;
+
+  > li {
+    height: $navbar-height;
+    background-color: $navbar-color;
+    display: block;
+
+    display: flex;
+    align-items: center;
+
+    > a {
+      @include center-elements;
+      width: 100%;
+      height: 100%;
+      padding-left: 1.75rem;
+      padding-right: 0.625rem;
+      &:hover::before {
+        opacity: 1;
+        left: 6px;
+      }
+      &::before {
+        content: '\2192';
+        position: absolute;
+        left: -4px;
+        transition: left 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home-text {
+    display: none;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-navbar {
+    position: absolute;
+    height: unset;
+
+    transform-origin: top left;
+    transform: scale(0);
+
+    &:hover {
+      transition: transform 0.7s ease;
+
+      transform: scale(1) translate(0);
+    }
+  }
+
+  .hamburger-menu {
+    &:hover + {
+      .app-navbar {
+        transition: transform 0.7s ease;
+
+        transform: scale(1) translate(0);
+      }
+    }
+  }
+
+  .app-navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submeniu > li > a::before {
+    content: unset;
+  }
+
+  .app-navbar {
+    top: $navbar-height;
+    > li {
+      width: 100%;
+      height: $navbar-height;
+      > a {
+        @include center-elements;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        &:hover {
+          + .submeniu {
+            display: block;
+            // border pentru deosebirea submeniului pe mobile
+            border: 1px solid var(--highlight);
+          }
+        }
+      }
+    }
+  }
+
+  .submeniu {
+    transition: none;
+    a {
+      justify-content: center;
+      transition: box-shadow 0.7s ease;
+
+      &:hover {
+        box-shadow: $box-shadow-select;
+      }
+    }
+
+    &:hover {
+      border: 1px solid red;
+    }
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+.hamburger-menu {
+  position: relative;
+  width: $navbar-height;
+  height: $navbar-height;
+}
+
+.line {
+  position: absolute;
+  width: 2rem;
+  height: 0.25rem;
+  background-color: var(--black);
+  border-radius: 8px;
+  left: 8px;
+  transition: all 0.3s ease;
+
+  @for $i from 1 through 3 {
+    $delay: 0.15s * $i;
+
+    &:nth-child(#{$i}) {
+      &:nth-child(1) {
+        top: 0.75rem;
+      }
+
+      &:nth-child(2) {
+        top: 1.375rem;
+      }
+
+      &:nth-child(3) {
+        bottom: 0.75rem;
+      }
+      animation: aparitie-animatie 0.55s ease forwards $delay,
+        blink 0.25s ease-in-out forwards $delay + 1s 1;
+    }
+  }
+}
+
+@keyframes aparitie-animatie {
+  0% {
+    background-color: var(--black);
+    transform: scale(0);
+    opacity: 0;
+    border-radius: 3px;
+  }
+  33% {
+    background-color: var(--culoare-secundara-2);
+    opacity: 0.4;
+    height: 0.25rem;
+    transform: scale(0.4);
+    border-radius: 4px;
+  }
+  66% {
+    background-color: var(--culoare-secundara-3);
+    border-radius: 8px;
+    height: 0.5rem;
+    opacity: 0.75;
+    transform: scale(0.75);
+    border-radius: 6px;
+  }
+  100% {
+    background-color: var(--highlight);
+    opacity: 1;
+    height: 0.25rem;
+    transform: scale(1);
+    border-radius: 8px;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    background-color: var(--black);
+    opacity: 1;
+  }
+}

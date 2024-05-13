@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- etapa_1: 2 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Sergiu" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+  <link rel="apple-touch-icon" sizes="76x76" href="./resurse/ico/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./resurse/ico/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./resurse/ico/favicon-16x16.png" />
+  <link rel="manifest" href="./resurse/ico/site.webmanifest" />
+  <link rel="mask-icon" href="./resurse/ico/safari-pinned-tab.svg" color="#5bbad5" />
+
+  <link rel="shortcut icon" href="./resurse/ico/favicon.ico" />
+  <link rel="stylesheet" href="./resurse/css/reset.css" type="text/css" />
+  <link rel="stylesheet" href="./resurse/css/tabel.css" type="text/css" />
+  <link rel="stylesheet" href="./resurse/css/math.css" type="text/css" />
+  <link rel="stylesheet" href="./resurse/css/top-button.css" type="text/css" />
+  <link rel="stylesheet" href="./resurse/css/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="./resurse/css/print.css" type="text/css" />
+  <link rel="stylesheet" href="./resurse/css/stil.css" type="text/css" />
+  <link rel="stylesheet" href="./resurse/css/media.css" type="text/css" />
+
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="msapplication-config" content="./resurse/icon/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <meta name="keywords" content="flori, magazin flori, trandafiri, lalele, buchet de flori" />
+  <meta name="description" content="Cumpara flori de calitate superioara. Livram buchetul in 4 ore in Bucuresti" />
+
+  <title>Floraria X</title>
+</head>
+
+<body>
+  <div id="top"></div>
+  <header class="header-content">
+    <nav>
+      <!-- etapa_1: 6 -->
+      <div class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <ul class="app-navbar">
+        <li>
+          <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span class="home-text"> Pagina principală </span>
+          </a>
+          <ul class="submeniu">
+            <li><a href="#exlusiv">Colecții exclusive</a></li>
+            <li><a href="#calcul">Calcularea Prețului</a></li>
+          </ul>
+        </li>
+        <li><a href="buchete-si-flori.html">Buchete & flori</a></li>
+        <li><a href="despre.html">Despre noi</a></li>
+
+        <li>
+          <a href="creeaza-buchet.html">Creeaza-ti un buchet de flori</a>
+          <ul class="submeniu">
+            <li>
+              <a href="creeaza-buchet.html#buchet">Buchete gata realizate</a>
+            </li>
+            <li>
+              <a href="creeaza-buchet.html#flori">Selecteaza florile</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <h1>Floraria X</h1>
+  </header>
+
+  <main>
+    <div id="grid-pagina">
+      <div id="bloc1">
+        <!-- etapa_1: 5 -->
+
+        <section id="welcome">
+          <h2>Magazin online de flori premium</h2>
+          <video controls="controls" class="poster-video" preload="metadata">
+            <source src="/resurse/video/poster_video.mp4" type="video/mp4" />
+            <source src="/resurse/video/poster_video.ogv" type="video/ogv" />
+            <track default src="/resurse/video/tracks/captions-video.vtt" kind="captions" srclang="ro" label="romana" />
+            <track src="/resurse/video/tracks/captions-video-en.vtt" kind="captions" srclang="en" label="engleza" />
+          </video>
+          <p>
+            Cumpără <b>flori de cea mai bună calitate</b> de la Floraria X.
+            Oferim
+            <!-- etapa_1: 9 -->
+            trandafiri, lalele și buchete impresionante, livrate
+            <!-- etapa_1: 10 -->
+            <em>în doar 4 ore</em> în București cu
+            <a href="https://www.fancourier.ro/" target="_blank">Fan Courier</a>.
+          </p>
+
+          <!-- etapa_1: 8 -->
+          <figure>
+            <picture>
+              <source media="(max-width: 599px)" srcset="/resurse/imagini/small-flowers.jpg" />
+              <source media="(min-width: 600px) and (max-width: 1199px)" srcset="/resurse/imagini/mid-flowers.jpg" />
+              <source media="(min-width: 1200px)" srcset="/resurse/imagini/big-flowers.jpg" />
+              <img src="/resurse/imagini/big-flowers.jpg" alt="Descriere imagine" id="media" />
+
+            </picture>
+
+            <figcaption>
+              Descoperă buchetele noastre <b>premium</b> pentru orice ocazie.
+            </figcaption>
+          </figure>
+          <p>
+            Explorează colecția noastră și comandă acum cele mai frumoase
+            flori pentru a încânta persoanele dragi.
+          </p>
+          <!-- etapa_1: 10 -->
+          <q>Floarea este simbolul frumuseții și prospețimii naturii.</q>
+        </section>
+        <section id="exlusiv">
+          <div>
+            <h2>Colecții exclusive</h2>
+            <article>
+              <h3>Descoperă ultimele colecții</h3>
+              <p>
+                <!-- etapa_1: 10 -->
+                Descoperă colecțiile noastre exclusive de <b>trandafiri</b> și
+                <b>lalele</b>. Fiecare buchet este creat cu grijă și pasiune
+                pentru a aduce bucurie în viețile clienților noștri.
+              </p>
+            </article>
+            <!-- etapa_1: 7 -->
+            <blockquote>
+              Calitatea superioară a florilor noastre ne diferențiază. Fiecare
+              floare este aleasă cu atenție pentru a asigura prospetime și
+              frumusețe durabilă.
+            </blockquote>
+            <p>
+              Comandă acum pentru a experimenta rafinamentul în fiecare
+              buchet.
+            </p>
+            <ul>
+              <li>Trandafiri premium</li>
+              <li>Lalele elegante</li>
+            </ul>
+
+            <!-- etapa_1: 11c -->
+            <div class="container-iframe">
+              <div class="taburi-iframe">
+                <a href="https://www.youtube.com/embed/R7im9ehytNc?si=PPxdk50vYHnk3nGo
+                  " target="ifr-video">Trandafiri</a>
+                <a href="https://www.youtube.com/embed/5QXeJwQ0Sy4?si=3kEA9484D2_XLk2U" target="ifr-video">Lalele</a>
+              </div>
+              <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/R7im9ehytNc?si=PPxdk50vYHnk3nGo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <!-- etapa_1: 11d -->
+            </div>
+            <a href="/resurse/imagini/big-flowers.jpg" download>Descarcă colecția de flori</a>
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Doloremque minima ducimus amet suscipit voluptas nostrum quo
+            adipisci minus veritatis dolorum?
+          </div>
+          <div>
+            <section id="calcul">
+              <h3>Calcularea Prețului</h3>
+              <p>Pentru a afla prețul total al buchetului tău:</p>
+
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <msup>
+                  <mi>preț_total</mi>
+                </msup>
+                <mo>=</mo>
+                <mn>preț_unitar</mn>
+                <mo>&times;</mo>
+                <msup>
+                  <mn>număr_flori</mn>
+                  <mn>2</mn>
+                </msup>
+              </math>
+
+              <p>Unde:</p>
+              <p></p>
+              <p><span>preț_total</span>: prețul total al buchetului</p>
+              <p><span>preț_unitar</span>: prețul pentru o floare</p>
+              <p>
+                <span>număr_flori</span>: numărul total de flori în buchet
+              </p>
+            </section>
+          </div>
+        </section>
+        <aside>
+          <h2>Promovare specială!</h2>
+          <p>
+            La achiziționarea a două buchete de flori, primești un al treilea
+            gratuit! Livrarea se realizează cu
+            <!-- etapa_1: 11a -->
+            <a href="https://www.fancourier.ro/" target="_blank">Fan Courier</a>;
+          </p>
+          <p>Ofertă valabilă până la sfârșitul lunii.</p>
+        </aside>
+      </div>
+      <div id="bloc2">
+        <div class="tabel-wrapper">
+          <table>
+            <caption>
+              Cele mai vândute flori
+            </caption>
+            <thead>
+              <tr>
+                <th>Produs</th>
+                <th>Preț buc (RON)</th>
+                <th>Disponibil fizic</th>
+                <th>Livrare astăzi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Trandafiri</td>
+                <td>25</td>
+                <td colspan="2">Da</td>
+              </tr>
+              <tr>
+                <td>Narcise</td>
+                <td>45</td>
+                <td colspan="2">Da</td>
+              </tr>
+              <tr>
+                <td>Orhidee</td>
+                <td>20</td>
+                <td>Da</td>
+                <td>Nu</td>
+              </tr>
+              <tr>
+                <td>Lalele</td>
+                <td>80</td>
+                <td>Nu</td>
+                <td>Da</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="bloc3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc4">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc6">
+        <p><b>IP:</b> <%- locals.ip %></p>
+      </div>
+      <div id="bloc7">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc8">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <!-- etapa_1: 12 -->
+    <details>
+      <summary>De unde provin florile?</summary>
+      <p>Florile provin din serele noastre.</p>
+    </details>
+    <details>
+      <summary>Este disponibilă plata cu cardul?</summary>
+      <p>Da!</p>
+    </details>
+
+    <address>
+      <p><i class="fa-solid fa-address-book"></i> Contact:</p>
+      <!-- etapa_1: 13a -->
+      <a href="tel:+1234567890">+123 456 7890</a>
+      <!-- etapa_1: 13b -->
+      <a href="https://maps.google.com/?q=Facultatea+de+Matematica+si+Informatica" target="_blank">Adresa</a>
+      <!-- etapa_1: 13c -->
+      <a href="mailto:contact@florariax.ro">contact@florariax.ro</a>
+      <!-- etapa_1: 13d -->
+      <a href="skype:florariaX" target="_blank">Skype</a>
+    </address>
+    <p>
+      <small>
+        Flori crescute cu multă
+        <i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 2s; color: red"></i>
+      </small>
+    </p>
+    <p>
+      <small>
+        <!-- etapa_1: 14 -->
+        Copyright&copy; 2024 Floraria X
+        <time datetime="2024-03-10">10 martie 2024</time>
+      </small>
+    </p>
+    <hr />
+
+    <!-- etapa_1: 11b -->
+    <a href="#top" class="top-button" title="Mergi sus">
+      <span>&#8593;</span>
+    </a>
+    <p class="banner">❗ Acesta este un proiect școlar!</p>
+  </footer>
+</body>
+
+</html>

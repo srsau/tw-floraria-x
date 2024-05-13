@@ -1,0 +1,38 @@
+@media screen and (max-width: 1200px) {
+  html {
+    --font-size: 14px;
+  }
+  body {
+    --dim-spatiere: 4rem;
+    --dim-grid-gap: 1.5rem;
+  }
+  #media {
+    max-width: 70%;
+    min-width: 9.375rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    --font-size: 12px;
+  }
+  body {
+    --dim-spatiere: 2rem;
+    --dim-grid-gap: 1rem;
+  }
+  #grid-pagina * {
+    animation: none !important;
+    transition: none !important;
+  }
+  #media {
+    max-width: 80%;
+    min-width: 6.25rem;
+  }
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  iframe {
+    width: 240px;
+    height: 110px;
+  }
+}

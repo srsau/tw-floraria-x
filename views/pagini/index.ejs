@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <%- include("../fragmente/head.ejs") %>
+  <link rel="stylesheet" href="/resurse/css/galerie-animata.css" type="text/css" />
+
+  <meta name="keywords" content="flori, magazin flori, trandafiri, lalele, buchet de flori" />
+  <meta name="description" content="Cumpara flori de calitate superioara. Livram buchetul in 4 ore in Bucuresti" />
+  <title>Floraria X</title>
+</head>
+
+<body>
+  <%- include("../fragmente/header.ejs") %>
+  <main>
+    <div id="grid-pagina">
+      <div id="bloc1">
+        <!-- etapa_1: 5 -->
+
+        <section id="welcome">
+          <h2>Magazin online de flori premium</h2>
+          <video controls="controls" class="poster-video" preload="metadata">
+            <source src="/resurse/video/poster_video.mp4" type="video/mp4" />
+            <source src="/resurse/video/poster_video.ogv" type="video/ogv" />
+            <track default src="/resurse/video/tracks/captions-video.vtt" kind="captions" srclang="ro" label="romana" />
+            <track src="/resurse/video/tracks/captions-video-en.vtt" kind="captions" srclang="en" label="engleza" />
+          </video>
+          <p>
+            Cumpără <b>flori de cea mai bună calitate</b> de la Floraria X.
+            Oferim
+            <!-- etapa_1: 9 -->
+            trandafiri, lalele și buchete impresionante, livrate
+            <!-- etapa_1: 10 -->
+            <em>în doar 4 ore</em> în București cu
+            <a href="https://www.fancourier.ro/" target="_blank">Fan Courier</a>.
+          </p>
+
+          <!-- etapa_1: 8 -->
+          <figure>
+            <picture>
+              <source media="(max-width: 599px)" srcset="/resurse/imagini/small-flowers.jpg" />
+              <source media="(min-width: 600px) and (max-width: 1199px)" srcset="/resurse/imagini/mid-flowers.jpg" />
+              <source media="(min-width: 1200px)" srcset="/resurse/imagini/big-flowers.jpg" />
+              <img src="/resurse/imagini/big-flowers.jpg" alt="Descriere imagine" id="media" />
+            </picture>
+
+            <figcaption>
+              Descoperă buchetele noastre <b>premium</b> pentru orice ocazie.
+            </figcaption>
+          </figure>
+          <p>
+            Explorează colecția noastră și comandă acum cele mai frumoase
+            flori pentru a încânta persoanele dragi.
+          </p>
+          <!-- etapa_1: 10 -->
+          <q>Floarea este simbolul frumuseții și prospețimii naturii.</q>
+        </section>
+        <section id="exlusiv">
+          <div>
+            <h2>Colecții exclusive</h2>
+            <article>
+              <h3>Descoperă ultimele colecții</h3>
+              <p>
+                <!-- etapa_1: 10 -->
+                Descoperă colecțiile noastre exclusive de <b>trandafiri</b> și
+                <b>lalele</b>. Fiecare buchet este creat cu grijă și pasiune
+                pentru a aduce bucurie în viețile clienților noștri.
+              </p>
+            </article>
+            <!-- etapa_1: 7 -->
+            <blockquote>
+              Calitatea superioară a florilor noastre ne diferențiază. Fiecare
+              floare este aleasă cu atenție pentru a asigura prospetime și
+              frumusețe durabilă.
+            </blockquote>
+            <p>
+              Comandă acum pentru a experimenta rafinamentul în fiecare
+              buchet.
+            </p>
+            <ul>
+              <li>Trandafiri premium</li>
+              <li>Lalele elegante</li>
+            </ul>
+
+            <!-- etapa_1: 11c -->
+            <div class="container-iframe">
+              <div class="taburi-iframe">
+                <a href="https://www.youtube.com/embed/R7im9ehytNc?si=PPxdk50vYHnk3nGo
+                  " target="ifr-video">Trandafiri</a>
+                <a href="https://www.youtube.com/embed/5QXeJwQ0Sy4?si=3kEA9484D2_XLk2U" target="ifr-video">Lalele</a>
+              </div>
+              <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/R7im9ehytNc?si=PPxdk50vYHnk3nGo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <!-- etapa_1: 11d -->
+            </div>
+            <a href="/resurse/imagini/big-flowers.jpg" download>Descarcă colecția de flori</a>
+          </div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Doloremque minima ducimus amet suscipit voluptas nostrum quo
+            adipisci minus veritatis dolorum?
+          </div>
+          <div>
+            <section id="calcul">
+              <h3>Calcularea Prețului</h3>
+              <p>Pentru a afla prețul total al buchetului tău:</p>
+
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <msup>
+                  <mi>preț_total</mi>
+                </msup>
+                <mo>=</mo>
+                <mn>preț_unitar</mn>
+                <mo>&times;</mo>
+                <msup>
+                  <mn>număr_flori</mn>
+                  <mn>2</mn>
+                </msup>
+              </math>
+
+              <p>Unde:</p>
+              <p></p>
+              <p><span>preț_total</span>: prețul total al buchetului</p>
+              <p><span>preț_unitar</span>: prețul pentru o floare</p>
+              <p>
+                <span>număr_flori</span>: numărul total de flori în buchet
+              </p>
+            </section>
+          </div>
+        </section>
+        <aside>
+          <h2>Promovare specială!</h2>
+          <p>
+            La achiziționarea a două buchete de flori, primești un al treilea
+            gratuit! Livrarea se realizează cu
+            <!-- etapa_1: 11a -->
+            <a href="https://www.fancourier.ro/" target="_blank">Fan Courier</a>;
+          </p>
+          <p>Ofertă valabilă până la sfârșitul lunii.</p>
+        </aside>
+      </div>
+      <div id="bloc2">
+        <div class="tabel-wrapper">
+          <table>
+            <caption>
+              Cele mai vândute flori
+            </caption>
+            <thead>
+              <tr>
+                <th>Produs</th>
+                <th>Preț buc (RON)</th>
+                <th>Disponibil fizic</th>
+                <th>Livrare astăzi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Trandafiri</td>
+                <td>25</td>
+                <td colspan="2">Da</td>
+              </tr>
+              <tr>
+                <td>Narcise</td>
+                <td>45</td>
+                <td colspan="2">Da</td>
+              </tr>
+              <tr>
+                <td>Orhidee</td>
+                <td>20</td>
+                <td>Da</td>
+                <td>Nu</td>
+              </tr>
+              <tr>
+                <td>Lalele</td>
+                <td>80</td>
+                <td>Nu</td>
+                <td>Da</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="bloc3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc4">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc6">
+        <p><b>IP:</b> <%- locals.ip %></p>
+      </div>
+      <div id="bloc7">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
+        velit tenetur doloremque vitae inventore!
+      </div>
+      <div id="bloc8">
+        <%- include("../fragmente/galerie-statica.ejs") %>
+      </div>
+    </div>
+  </main>
+
+  <%- include("../fragmente/galerie_animata.ejs")  %>
+
+  <%- include("../fragmente/footer.ejs") %>
+</body>
+
+</html>

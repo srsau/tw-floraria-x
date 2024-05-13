@@ -1,0 +1,123 @@
+$transformare_i: skewX(0deg) !default;
+$transformare_f: skewX(90deg) !default;
+$setare-server: black !default;
+$nrimag: 7 !default;
+$nr-imagini-server: 7 !default;
+$timp-animatie: 2s;
+$timp-animatie-total: $nr-imagini-server * $timp-animatie;
+
+.galerie-a {
+  width: 300px;
+  height: 280px;
+
+  border: 5px solid;
+  border-image: linear-gradient(var(--culoare-1), var(--culoare-secundara-3)) 27;
+
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 5rem;
+
+  picture,
+  img {
+    height: 100%;
+  }
+}
+
+.galerie-a figcaption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  text-align: center;
+}
+
+.galerie-a figure {
+  position: relative;
+  width: 300px;
+  height: 270px;
+}
+
+#galerie-animata figure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  animation-name: gal_exemplu;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  animation-duration: $timp-animatie-total;
+  animation-fill-mode: none;
+  transform-origin: center left;
+}
+
+#galerie-animata {
+  &:hover {
+    figure {
+      animation-play-state: paused;
+    }
+  }
+}
+@for $i from 1 through $nr-imagini-server {
+  $delay: ($nr-imagini-server - $i) * $timp-animatie;
+  #galerie-animata figure:nth-of-type(#{$i}) {
+    animation-delay: $delay;
+  }
+}
+
+$ww: '#{calc(100 - ($timp-animatie / $timp-animatie-total * 100))}%';
+$ww-2: '#{calc(100 - ($timp-animatie / $timp-animatie-total * 100) + 0.01)}%';
+
+@keyframes gal_exemplu {
+  0% {
+    opacity: 1;
+    z-index: 10;
+  } /*perioada 0-5% in care se afiseaza fara efect */
+
+  #{percentage(calc($timp-animatie / $timp-animatie-total / 2))} {
+    transform: $transformare_i;
+  }
+
+  #{percentage(calc($timp-animatie / $timp-animatie-total ))} {
+    z-index: 10;
+    transform: $transformare_f;
+  }
+  #{percentage(calc(($timp-animatie / $timp-animatie-total) + 0.001  ))} {
+    z-index: -10;
+    transform: $transformare_i;
+  } /* il ascund cat mai in spate sa nu vina peste imaginile care erau mai sus in html decat el*/
+
+  #{$ww} {
+    transform: $transformare_i;
+    z-index: -10;
+  }
+
+  #{$ww-2} {
+    z-index: 0;
+    transform: scaleY(1);
+    opacity: 1;
+  } /*setez z-index la 0 ca sa revina la ordinea normala de afisare*/
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    z-index: 0;
+  }
+}
+
+@keyframes aparitie {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #sectiune-galerie-animata {
+    display: none;
+  }
+}

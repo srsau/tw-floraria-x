@@ -1,0 +1,24 @@
+{
+  "name": "floraria-x",
+  "version": "1.0.0",
+  "description": "Magazin virtual de flori",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "sass:w": "sass -w resurse/scss:resurse/css --no-source-map"
+  },
+  "keywords": [
+    "flori",
+    "trandafiri",
+    "buchete"
+  ],
+  "author": "Elisei Sergiu-Constantin",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "sass": "^1.76.0",
+    "sharp": "^0.33.3"
+  }
+}

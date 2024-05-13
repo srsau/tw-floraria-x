@@ -1,0 +1,54 @@
+<section id="galerie-statica">
+
+  <div id="container">
+    <h2 id="text">
+      Galerie
+      <div id="text-reflectat">
+        Galerie
+      </div>
+    </h2>
+
+  </div>
+
+  <div id="grid-galerie">
+
+    <% 
+            var vLuni=["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie","iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+            var anotimpuri = {
+              "primavara": [2,3,4],
+              "vara": [5,6,7],
+              "toamna": [8,9,10],
+              "iarna": [11,0,1],
+            }
+            var d=new Date();
+            var lunaCurenta = d.getMonth()
+            var anotimpCurent = (() => {
+              for (var anotimp in anotimpuri) {
+                      if (anotimpuri[anotimp].indexOf(lunaCurenta) !== -1) {
+                          return anotimp;
+                      }
+                   }
+            })()
+            const imaginiAnotimpCurent = locals.imagini.filter(img => img.anotimp === anotimpCurent)
+            for (let i=0; i<=imaginiAnotimpCurent.length; i++) { 
+                const imag = imaginiAnotimpCurent[i]
+                if (imag?.anotimp === anotimpCurent) {
+                %>
+    <figure class="fig-<%= i%>">
+      <picture>
+        <source srcset="<%= imag.fisier_mic %>" media="(max-width: 600px)" />
+        <source srcset="<%= imag.fisier_mediu %>" media="(max-width: 1200px)" />
+        <img src="<%= imag.cale_fisier %>" alt="<%= imag.titlu %>" title="<%= imag.text_descriere %>">
+      </picture>
+      <figcaption><%= imag.text_descriere%></figcaption>
+      <% if (imag.license) { %>
+      <small>
+        <%- imag.license %>
+      </small>
+      <% } %>
+
+    </figure>
+    <% } %>
+    <% } %>
+  </div>
+</section>

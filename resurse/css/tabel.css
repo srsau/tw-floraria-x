@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+  border: 5px double var(--culoare-1);
+  border-collapse: collapse;
+}
+
+caption {
+  caption-side: bottom;
+}
+
+th,
+td {
+  padding: 0.625rem;
+  text-align: center;
+  border: 1px solid var(--culoare-1);
+  transition: all 0.75s ease;
+}
+
+table tbody tr:hover td {
+  background-color: var(--highlight);
+  color: var(--text);
+  border-width: 5px;
+}
+
+thead th:nth-child(even),
+table td:nth-child(even) {
+  color: var(--culoare-secundara-3);
+}
+
+thead th:nth-child(odd),
+table td:nth-child(odd) {
+  color: var(--culoare-secundara-1);
+}

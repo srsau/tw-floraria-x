@@ -1,0 +1,156 @@
+{
+  "cale_galerie": "resurse/imagini/galerie",
+  "imagini": [
+    {
+      "cale_fisier": "trandafir-roz.jpg",
+      "titlu": "Trandafir roz",
+      "text_descriere": "Trandafirul roz este un simbol al admirației și al fericirii.",
+      "anotimp": "primavara",
+      "license": "<p class=\"attribution\">\"<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.flickr.com/photos/39535794@N05/6293063635\">Pink Rose</a>\" by <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.flickr.com/photos/39535794@N05\">seriousbri</a> is licensed under <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://creativecommons.org/licenses/by/2.0/?ref=openverse\">CC BY 2.0 <img src=\"https://mirrors.creativecommons.org/presskit/icons/cc.svg\" style=\"height: 1em; margin-right: 0.125em; display: inline;\"></img><img src=\"https://mirrors.creativecommons.org/presskit/icons/by.svg\" style=\"height: 1em; margin-right: 0.125em; display: inline;\"></img></a>.</p>"
+    },
+    {
+      "cale_fisier": "narcisa.jpg",
+      "titlu": "Narcisa",
+      "text_descriere": "Narcisa este cunoscută pentru frumusețea sa delicată și parfumul său subtil.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "lalea.jpg",
+      "titlu": "Lalea",
+      "text_descriere": "Laleaua se remarcă prin culorile vibrante și formele elegante ale petalelor sale.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "mac.jpg",
+      "titlu": "Mac",
+      "text_descriere": "Macul este recunoscut pentru petalele sale roșii intense și aspectul sălbatic și fragil.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "trandafir.jpg",
+      "titlu": "Trandafir",
+      "text_descriere": "Trandafirul este simbolul iubirii și al frumuseții, cu petalele sale delicate și parfumul îmbietor.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "zambila.jpg",
+      "titlu": "Zambila",
+      "text_descriere": "Zambila este adesea apreciată pentru forma sa elegantă și parfumul său subtil.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "crocus.jpg",
+      "titlu": "Crocus",
+      "text_descriere": "Crocusul este apreciat pentru culorile sale vibrante și pentru faptul că înflorește devreme în primăvară.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "ghiocei.jpg",
+      "titlu": "Ghiocei",
+      "text_descriere": "Ghioceii sunt floarele care anunță venirea primăverii, fiind adesea asociate cu speranța și regenerarea.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "violete.jpg",
+      "titlu": "Violete",
+      "text_descriere": "Violetele sunt adorate pentru frumusețea lor delicată și parfumul lor plăcut.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "frezie.jpg",
+      "titlu": "Frezie",
+      "text_descriere": "Freziile sunt apreciate pentru varietatea culorilor lor vibrante și parfumul lor îmbietor.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "liliac.jpg",
+      "titlu": "Liliac",
+      "text_descriere": "Liliacul este cunoscut pentru inflorescențele sale mari și parfumul său dulce.",
+      "anotimp": "primavara"
+    },
+    {
+      "cale_fisier": "hortensie.jpg",
+      "titlu": "Hortensie",
+      "text_descriere": "Hortensia este admirată pentru buchetele sale mari și variate de flori, care aduc un farmec deosebit în grădini.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "iris.jpg",
+      "titlu": "Iris",
+      "text_descriere": "Irisul este cunoscut pentru eleganța și frumusețea florilor sale, care înflorește în vară și este apreciat pentru varietatea culorilor sale.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "bujor.jpg",
+      "titlu": "Bujor",
+      "text_descriere": "Bujorul este admirat pentru frumusețea sa nobilă și parfumul său îmbietor.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "floarea-soarelui.jpg",
+      "titlu": "Floarea Soarelui",
+      "text_descriere": "Floarea soarelui este cunoscută pentru înălțimea sa impresionantă și pentru faptul că urmărește mereu lumina soarelui.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "lavanda.jpg",
+      "titlu": "Lavanda",
+      "text_descriere": "Lavanda este apreciată pentru frumusețea și aroma sa relaxantă, fiind folosită adesea în scopuri terapeutice și cosmetice.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "crin.jpg",
+      "titlu": "Crin",
+      "text_descriere": "Crinul este admirat pentru eleganța sa și parfumul său îmbietor, fiind adesea asociat cu nobilimea și puritatea.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "iasomie.jpg",
+      "titlu": "Iasomie",
+      "text_descriere": "Iasomia este cunoscută pentru florile sale parfumate și aspectul său delicat, fiind apreciată pentru frumusețea sa.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "gardenie.jpg",
+      "titlu": "Gardenie",
+      "text_descriere": "Gardenia este apreciată pentru florile sale albe și parfumul său puternic și îmbietor, fiind adesea utilizată în aranjamente florale și parfumerie.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "orhidee.jpg",
+      "titlu": "Orhidee",
+      "text_descriere": "Orhideea este admirată pentru frumusețea și diversitatea sa, fiind considerată una dintre cele mai elegante și exotice flori.",
+      "anotimp": "vara"
+    },
+    {
+      "cale_fisier": "crizantema.jpg",
+      "titlu": "Crizantema",
+      "text_descriere": "Crizantema este apreciată pentru culorile sale vii și rezistența sa la condițiile de creștere, fiind adesea asociată cu echilibrul și longevitatea.",
+      "anotimp": "toamna"
+    },
+    {
+      "cale_fisier": "anemona.jpg",
+      "titlu": "Anemona",
+      "text_descriere": "Anemona este cunoscută pentru eleganța și frumusețea sa delicată, fiind adesea asociată cu emoțiile și sentimentele profunde.",
+      "anotimp": "toamna"
+    },
+    {
+      "cale_fisier": "clematis.jpg",
+      "titlu": "Clematis",
+      "text_descriere": "Clematisul este apreciat pentru florile sale mari și bogate, care adaugă un farmec deosebit în grădini și pe pergoale.",
+      "anotimp": "toamna"
+    },
+    {
+      "cale_fisier": "dalia.jpg",
+      "titlu": "Dalia",
+      "text_descriere": "Dalia este recunoscută pentru varietatea sa impresionantă de culori și pentru faptul că înflorește până târziu în toamnă.",
+      "anotimp": "toamna"
+    },
+    {
+      "cale_fisier": "ghiocei.jpg",
+      "titlu": "Ghiocei",
+      "text_descriere": "In ultimele zile de iarnă, începem să ne facem apariția!",
+      "anotimp": "iarna"
+    }
+  ]
+}
