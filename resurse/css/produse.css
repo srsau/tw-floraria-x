@@ -1,0 +1,30 @@
+#produse {
+  margin: auto;
+  max-width: 1440px;
+}
+
+.grid-produse {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.produs {
+  padding: var(--padding-2);
+  border: 1px solid black;
+}
+
+.part-container {
+  display: flex;
+  gap: var(--dim-grid-gap);
+}
+
+.produs h3 {
+  margin-bottom: var(--margin-1);
+}
+
+.nume_carac {
+  font-weight: bold;
+  color: var(--culoare-secundara-2);
+}

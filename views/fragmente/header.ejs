@@ -18,7 +18,18 @@
           <li><a href="/index#calcul">Calcularea Prețului</a></li>
         </ul>
       </li>
-      <li><a href="/buchete-si-flori">Buchete & flori</a></li>
+      <li>
+        <a href="/produse">Produse</a>
+        <ul class="submeniu">
+          <% for (let categorie of locals.categorii) { %>
+          <li>
+            <a href="/produse?categorie=<%- categorie.href %>"
+              ><%- categorie.text %></a
+            >
+          </li>
+          <% } %>
+        </ul>
+      </li>
       <li><a href="/despre">Despre noi</a></li>
 
       <li>

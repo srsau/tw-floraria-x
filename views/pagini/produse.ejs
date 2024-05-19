@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
+  <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+  <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
+  <title>Cofetăria Dulcelind - home</title>
+  <%- include("../fragmente/head") %>
+
+  <script type="text/javascript" src=/resurse/js/produse.js></script>
+
+</head>
+
+<body>
+  <%- include("../fragmente/header") %>
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="inp-nume">Nume:</label>
+          <input type="text" class="form-control" id="inp-nume">
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+          <label for="inp-pret" class="mb-2"> Pret minim:</label><br />
+          <div class="d-flex align-items-center gap-2">
+            <span>0</span>
+            <input type="range" class="form-range" id="inp-pret" value="0" min="0" max="200">
+            <span>200</span>
+          </div>
+          <span id="infoRange">(0)</span>
+        </div>
+
+        <div class="col-md-6 mb-3 m-auto">
+          <label for="inp-culoare-pred">Alege culoare predominanta din lista:</label>
+          <input list="culori" class="form-control" id="inp-culoare-pred" name="culoare-predominanta" />
+          <datalist id="culori">
+            <option value="mov"></option>
+            <option value="rosu"></option>
+          </datalist>
+        </div>
+
+        <!-- <div class="col-md-6 mb-3 m-auto">Livrare astazi:
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="i_rad1" name="gr_rad" value="Da">
+            <label class="form-check-label" for="i_rad1">Da</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="i_rad2" name="gr_rad" value="Nu">
+            <label class="form-check-label" for="i_rad2">Nu</label>
+          </div>
+        </div> -->
+        <!-- <div class="col-md-6 mb-3 m-auto">
+          Livrare astazi:
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-primary">
+              <input type="radio" name="gr_rad" id="i_rad1" value="Da"> Da
+            </label>
+            <label class="btn btn-outline-primary">
+              <input type="radio" name="gr_rad" id="i_rad2" value="Nu"> Nu
+            </label>
+          </div>
+        </div> -->
+        <div class="btn-group-toggle col-md-6 mb-3 m-auto" data-toggle="buttons">
+          <div>Livrare astazi:</div>
+
+          <input type="radio" class="btn-check" name="gr_rad" id="success-outlined" value="Da">
+          <label class="btn btn-outline-success" for="success-outlined">Da</label>
+
+          <input type="radio" class="btn-check" name="gr_rad" id="danger-outlined" value="Nu">
+          <label class="btn btn-outline-danger" for="danger-outlined">Nu</label>
+
+        </div>
+
+
+
+
+
+        <!-- <div>Tip produs
+          <input type="checkbox" id="floare singura" name="tip_produs" value="floare singura" checked>
+          <label for="floare singura">floare singura</label><br>
+          <input type="checkbox" id="buchet" name="tip_produs" value="buchet" checked>
+          <label for="buchet">buchet</label><br>
+          <input type="checkbox" id="ghiveci" name="tip_produs" value="ghiveci" checked>
+          <label for="ghiveci">ghiveci</label><br><br>
+        </div> -->
+        <!-- 
+        <div>
+          <label for="inp-desc">Descriere:</label>
+          <textarea id="inp-desc" name="desc" rows="1" cols="50"></textarea>
+        </div> -->
+
+
+
+        <div class="col-md-6 mb-3 m-auto">
+
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Cauta dupa descriere..." id="inp-desc" style="height: 100px" name="desc"></textarea>
+            <label for="inp-desc">Descriere</label>
+            <div class="invalid-feedback">Campul este obligatoriu.</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div>
+            Tip produs
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="floare-singura" name="tip_produs" value="floare singura" checked>
+            <label class="form-check-label" for="floare-singura">floare singura</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="buchet" name="tip_produs" value="buchet" checked>
+            <label class="form-check-label" for="buchet">buchet</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="ghiveci" name="tip_produs" value="ghiveci" checked>
+            <label class="form-check-label" for="ghiveci">ghiveci</label>
+          </div>
+        </div>
+
+        <!-- 
+        <div>
+          <label for="select-simplu">Rezistenta zile:</label>
+          <select id="select-simplu">
+            <option value="nimic" selected>Alege o opțiune</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+        </div> -->
+
+
+
+        <div class="col-md-6 mb-3 m-auto">
+          <label for="select-multiplu">Selectați valorile pe care NU le doriți in compozitie:</label>
+          <select class="form-control" id="select-multiplu" multiple>
+            <% for (let opt of locals.compozitii) { %>
+            <option value="<%- opt %>"><%- opt %></option>
+            <% } %>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="select-simplu">Rezistenta zile:</label>
+          <select class="form-control" id="select-simplu">
+            <option value="nimic" selected>Alege o opțiune</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+        </div>
+
+        <div class="col-12 d-flex justify-content-between">
+          <button id="filtrare" class="btn btn-primary">
+            <i class="bi bi-filter"></i> <span class="d-none d-md-inline">Filtreaza</span>
+          </button>
+          <button id="resetare" class="btn btn-secondary">
+            <i class="bi bi-arrow-counterclockwise"></i> <span class="d-none d-md-inline">Reseteaza</span>
+          </button>
+          <button id="sortCrescTipProdus" class="btn btn-primary">
+            <i class="bi bi-sort-up"></i> <span class="d-none d-md-inline">Sorteaza crescator</span>
+          </button>
+          <button id="sortDescrescTipProdus" class="btn btn-secondary">
+            <i class="bi bi-sort-down"></i> <span class="d-none d-md-inline">Sorteaza descrescator</span>
+          </button>
+          <button id="calcTotal" class="btn btn-primary">
+            <i class="bi bi-calculator"></i> <span class="d-none d-md-inline">Calculeaza totalul</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <section id="produse">
+      <h2>Produse</h2>
+      <div class="grid-produse">
+        <% for( let prod of locals.produse) { 
+          
+
+          const dateObj = new Date(prod.data_adaugare);
+  const options = {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    weekday: 'long'
+  };
+  const formatter = new Intl.DateTimeFormat('ro-RO', options);
+  const parts = formatter.formatToParts(dateObj);
+  const day = parts.find(part => part.type === 'day').value;
+  const month = parts.find(part => part.type === 'month').value;
+  const year = parts.find(part => part.type === 'year').value;
+  const weekday = parts.find(part => part.type === 'weekday').value;
+  const dataAfisata = `${day}-${month}-${year} [${weekday}]`;
+
+          const livrareAzi = prod.livrare_azi ? 'Da' : 'Nu'
+          %>
+
+
+        <article class="produs" id="ar_ent_<%-prod.id %>">
+          <h3 class="nume"><span class="nume_carac">Nume:</span> <a href="/produs/<%-prod.id %>"><span class="val-nume"><%- prod.nume%></span></a></h3>
+          <div class="part-container">
+            <div class="part-1">
+              <p><span class="nume_carac">Categorie: </span> <span class="val-categorie"><%- prod.categorie%></span> </p>
+              <figure>
+                <a href="/produs/<%-prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]" /></a>
+                <figcaption><span class="nume_carac">Descriere: </span><span class="val-desc">
+                    <%- prod.descriere %>
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="part2">
+              <p class="pret"><span class="nume_carac">Pret: </span> <span class="val-pret"><%- prod.pret%></span></p>
+              <p class="culoare"><span class="nume_carac">Culoare predominanta:</span> <span class="val-culoare"><%- prod.culoare_predominanta%></span></p>
+              <p class="gramaj"><span class="nume_carac">Compozitie:</span> <span class="val-compozitie"><%- prod.compozitie_buchet%></span></p>
+              <p class="date"><span class="nume_carac">Data adaugarii:</span> <span class="val-date"><%- dataAfisata%></span></p>
+              <p><span class="nume_carac">Livrare astazi:</span> <time class="val-livrareAstazi"><%- livrareAzi%></time></p>
+              <p><span class="nume_carac">Tip produs:</span> <time class="val-tipProdus"><%- prod.tip_produs%></time></p>
+              <p><span class="nume_carac">Rezistenta zile:</span> <time class="val-rezistentaZile"><%- prod.rezistenta_zile%></time></p>
+            </div>
+          </div>
+
+
+        </article>
+        <% }%>
+      </div>
+    </section>
+  </main>
+
+  <%- include("../fragmente/footer") %>
+</body>
+
+</html>

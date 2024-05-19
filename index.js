@@ -4,6 +4,72 @@ const path = require('path');
 const sharp = require('sharp');
 const sass = require('sass');
 const ejs = require('ejs');
+const Client = require('pg').Client;
+
+var client = new Client({
+  database: 'tw_florarie',
+  user: 'postgres',
+  password: 'admin',
+  host: 'localhost',
+  port: 5432,
+});
+client.connect();
+
+// ----
+const getCategories = async () => {
+  let result;
+  try {
+    result = await client.query('select distinct categorie from flori');
+  } catch (e) {
+    console.error(e);
+  }
+  return result.rows;
+};
+
+const getAllFlowers = async () => {
+  let result;
+  try {
+    result = await client.query('select * from flori');
+  } catch (e) {
+    console.error(e);
+  }
+  return result.rows;
+};
+
+const getCategory = async (categorie) => {
+  let result;
+  try {
+    result = await client.query(
+      `select * from flori where categorie='${categorie}'`
+    );
+  } catch (e) {
+    console.error(e);
+  }
+  return result.rows;
+};
+
+const getProductDetails = async (productId) => {
+  let result;
+  try {
+    result = await client.query(`select * from flori where id='${productId}'`);
+  } catch (e) {
+    console.error(e);
+  }
+  return result.rows;
+};
+
+const getCompozitii = async () => {
+  let result;
+  try {
+    result = await client.query(`
+    select distinct unnest(compozitie_buchet) from flori where compozitie_buchet is not null;
+  `);
+  } catch (e) {
+    console.error(e);
+  }
+  return result.rows.map((element) => element.unnest);
+};
+// ----
 
 obGlobal = {
   obErori: null,
@@ -37,11 +103,65 @@ app.get(new RegExp('^/resurse/[a-zA-Z0-9_/-]+/$'), function (req, res) {
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
-app.get(['/', '/home', '/index'], function (req, res) {
+app.get(['/', '/home', '/index'], async function (req, res) {
+  const categorii = await getCategories();
+  const categoriiArr = categorii.map((c) => ({
+    href: encodeURIComponent(c.categorie),
+    text: c.categorie,
+  }));
+
   res.render('pagini/index.ejs', {
     ip: req.ip,
+    categorii: categoriiArr,
     imagini: obGlobal.obImagini.imagini,
   });
+});
+
+app.get('/produse', async function (req, res) {
+  console.log('aa', req.query);
+  let rezultate = null;
+
+  if (req.query.categorie) {
+    rezultate = await getCategory(req.query.categorie);
+  } else {
+    rezultate = await getAllFlowers();
+  }
+
+  const categorii = await getCategories();
+  const categoriiArr = categorii.map((c) => ({
+    href: encodeURIComponent(c.categorie),
+    text: c.categorie,
+  }));
+
+  const compozitii = await getCompozitii();
+  console.log({ compozitii });
+
+  console.log({ rezultate: rezultate.length });
+  res.render('pagini/produse.ejs', {
+    ip: req.ip,
+    produse: rezultate,
+    compozitii,
+    categorii: categoriiArr,
+    imagini: obGlobal.obImagini.imagini,
+  });
+
+  // console.log(req.query)
+  // var conditieQuery="";
+  // if (req.query.tip){
+  //     conditieQuery=` where tip_produs='${req.query.tip}'`
+  // }
+  // client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezOptiuni){
+
+  //     client.query(`select * from prajituri ${conditieQuery}`, function(err, rez){
+  //         if (err){
+  //             console.log(err);
+  //             afisareEroare(res, 2);
+  //         }
+  //         else{
+  //             res.render("pagini/produse", {produse: rez.rows, optiuni:rezOptiuni.rows})
+  //         }
+  //     })
+  // });
 });
 
 app.get('*/galerie-animata.css', function (req, res) {
@@ -74,9 +194,18 @@ app.get('/*.ejs', function (req, res) {
   afisareEroare(res, 400);
 });
 
-app.get(['/*'], function (req, res) {
+app.get(['/*'], async function (req, res) {
+  const categorii = await getCategories();
+  const categoriiArr = categorii.map((c) => ({
+    href: encodeURIComponent(c.categorie),
+    text: c.categorie,
+  }));
+  const locals = {
+    categorii: categoriiArr,
+  };
+
   try {
-    res.render('pagini' + req.url, function (err, rezultatRandare) {
+    res.render('pagini' + req.url, locals, function (err, rezultatRandare) {
       if (err) {
         if (err.message.startsWith('Failed to lookup view')) {
           console.log('Nu a gasit pagina', req.url);
@@ -191,18 +320,19 @@ function compileazaScss(caleScss, caleCss) {
   }
 
   let numeFisCss = path.basename(caleCss);
-  if (fs.existsSync(caleCss)) {
-    const fileName =
-      numeFisCss.split('.')[0] +
-      '_' +
-      new Date().getTime() +
-      '.' +
-      numeFisCss.split('.')[1];
-    fs.copyFileSync(
-      caleCss,
-      path.join(obGlobal.folderBackup, 'resurse/css', fileName)
-    );
-  }
+  // todo
+  // if (fs.existsSync(caleCss)) {
+  //   const fileName =
+  //     numeFisCss.split('.')[0] +
+  //     '_' +
+  //     new Date().getTime() +
+  //     '.' +
+  //     numeFisCss.split('.')[1];
+  //   fs.copyFileSync(
+  //     caleCss,
+  //     path.join(obGlobal.folderBackup, 'resurse/css', fileName)
+  //   );
+  // }
   rez = sass.compile(caleScss, { sourceMap: true });
   fs.writeFileSync(caleCss, rez.css);
 }

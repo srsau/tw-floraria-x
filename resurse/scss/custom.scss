@@ -1,6 +1,6 @@
 @use '../../node_modules/bootstrap/scss/bootstrap.scss' with (
-  $primary: red,
-  $secondary: purple,
+  $primary: #684a8d,
+  $secondary: #9f86cc,
 
   $grid-breakpoints: (
     xs: 0,
@@ -14,6 +14,7 @@
   $font-family-sans-serif: 'Roboto',
 
   $border-radius: 0.4rem,
+  $border-width: 2px,
   $border-radius-sm: 0.45rem,
   $border-radius-lg: 0.75rem,
 
@@ -21,7 +22,11 @@
   $h2-font-size: 2.5rem,
 
   $form-text-font-weight: 500,
-  $input-padding-x-lg: 1.5rem
+  $input-padding-x-lg: 1.5rem,
+
+  $form-range-thumb-bg: #684a8d,
+  $form-range-track-bg: #9f86cc,
+  $form-range-thumb-width: calc(1rem * 1.5)
 );
 
 h1,

@@ -1,3 +1,5 @@
+@import '../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
 html {
   --font-size: 16px;
   font-size: var(--font-size);
@@ -8,6 +10,7 @@ body {
   --dim-grid-gap: 2rem;
 
   --padding-1: 1rem;
+  --padding-2: 1.5rem;
   --padding-3: 3rem;
   --margin-1: 1.25rem;
   --margin-2: 2.5rem;
@@ -21,6 +24,16 @@ body {
   --text: #ffffff;
   --white: #ffffff;
   --black: #000000;
+
+  --culoare-1-dark: #2e1a7f;
+  --culoare-secundara-1-dark: #1823a3;
+  --culoare-secundara-2-dark: #6b1ca3;
+  --culoare-secundara-3-dark: #1c427a;
+  --highlight-dark: #971ca3;
+  --text-dark: #e0e0e0;
+  --white-dark: #e0e0e0;
+  --black-dark: #121212;
+
   --error: red;
 
   font-size: 1rem;
