@@ -217,9 +217,11 @@ window.addEventListener('load', function () {
   }
 
   document.getElementById('sortCrescTipProdus').onclick = function () {
+    console.log('sortCrescTipProdus');
     sorteaza(1);
   };
   document.getElementById('sortDescrescTipProdus').onclick = function () {
+    console.log('sortDescrescTipProdus');
     sorteaza(-1);
   };
 

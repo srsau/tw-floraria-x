@@ -1,7 +1,7 @@
 @use 'sass:list';
 @use 'sass:math';
 
-@use '../resurse/scss_ejs/galerie_animata_frag' with (
+@use '../../resurse/scss_ejs/galerie_animata_frag' with (
   $transformare_i: scaleY(0.33),
   $transformare_f: rotate(180deg),
   $nr-imagini-server: <%- locals.nrImagini %>

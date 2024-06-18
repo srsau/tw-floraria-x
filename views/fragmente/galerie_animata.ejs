@@ -1,5 +1,6 @@
 <div id="galerie-animata" class="galerie-a">
-  <% for (let imag of locals.imagini) { %>
+  <% for (let imag of locals.imagini) {
+    %>
   <figure>
     <picture>
       <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />

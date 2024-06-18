@@ -35,19 +35,6 @@
             <a href="https://www.fancourier.ro/" target="_blank">Fan Courier</a>.
           </p>
 
-          <!-- etapa_1: 8 -->
-          <figure>
-            <picture>
-              <source media="(max-width: 599px)" srcset="/resurse/imagini/small-flowers.jpg" />
-              <source media="(min-width: 600px) and (max-width: 1199px)" srcset="/resurse/imagini/mid-flowers.jpg" />
-              <source media="(min-width: 1200px)" srcset="/resurse/imagini/big-flowers.jpg" />
-              <img src="/resurse/imagini/big-flowers.jpg" alt="Descriere imagine" id="media" />
-            </picture>
-
-            <figcaption>
-              Descoperă buchetele noastre <b>premium</b> pentru orice ocazie.
-            </figcaption>
-          </figure>
           <p>
             Explorează colecția noastră și comandă acum cele mai frumoase
             flori pentru a încânta persoanele dragi.
@@ -89,7 +76,7 @@
                   " target="ifr-video">Trandafiri</a>
                 <a href="https://www.youtube.com/embed/5QXeJwQ0Sy4?si=3kEA9484D2_XLk2U" target="ifr-video">Lalele</a>
               </div>
-              <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/R7im9ehytNc?si=PPxdk50vYHnk3nGo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/R7im9ehytNc?si=PPxdk50vYHnk3nGo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <!-- etapa_1: 11d -->
             </div>
             <a href="/resurse/imagini/big-flowers.jpg" download>Descarcă colecția de flori</a>
@@ -105,17 +92,17 @@
               <p>Pentru a afla prețul total al buchetului tău:</p>
 
               <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <msup>
-                  <mi>preț_total</mi>
-                </msup>
+                <mi>preț_total</mi>
                 <mo>=</mo>
                 <mn>preț_unitar</mn>
-                <mo>&times;</mo>
+                <mo>×</mo>
                 <msup>
-                  <mn>număr_flori</mn>
+                  <mi>număr_flori</mi>
                   <mn>2</mn>
                 </msup>
               </math>
+
+
 
               <p>Unde:</p>
               <p></p>
@@ -201,10 +188,25 @@
       <div id="bloc8">
         <%- include("../fragmente/galerie-statica.ejs") %>
       </div>
+
     </div>
   </main>
-
   <%- include("../fragmente/galerie_animata.ejs")  %>
+
+  <!-- etapa_1: 8 -->
+  <figure>
+    <picture>
+      <source media="(max-width: 767px)" srcset="/resurse/imagini/small-flowers.jpg" />
+      <source media="(min-width: 768px) and (max-width: 1023px)" srcset="/resurse/imagini/mid-flowers.jpg" />
+      <source media="(min-width: 1024px)" srcset="/resurse/imagini/big-flowers.jpg" />
+      <img src="/resurse/imagini/big-flowers.jpg" alt="Descriere imagine" id="media" />
+    </picture>
+
+    <figcaption>
+      Descoperă buchetele noastre <b>premium</b> pentru orice ocazie.
+    </figcaption>
+  </figure>
+  <br />
 
   <%- include("../fragmente/footer.ejs") %>
 </body>
