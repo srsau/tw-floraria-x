@@ -1,12 +1,13 @@
+// etapa_5 bonus galerie animata
 $transformare_i: skewX(0deg) !default;
 $transformare_f: skewX(90deg) !default;
 $setare-server: black !default;
-$nrimag: 7 !default;
 $nr-imagini-server: 7 !default;
 $timp-animatie: 2s;
 $timp-animatie-total: $nr-imagini-server * $timp-animatie;
 
 .galerie-a {
+  margin: auto;
   width: 300px;
   height: 280px;
 
@@ -15,7 +16,6 @@ $timp-animatie-total: $nr-imagini-server * $timp-animatie;
 
   position: relative;
   overflow: hidden;
-  margin-bottom: 5rem;
 
   picture,
   img {
@@ -71,7 +71,7 @@ $ww-2: '#{calc(100 - ($timp-animatie / $timp-animatie-total * 100) + 0.01)}%';
   0% {
     opacity: 1;
     z-index: 10;
-  } /*perioada 0-5% in care se afiseaza fara efect */
+  }
 
   #{percentage(calc($timp-animatie / $timp-animatie-total / 2))} {
     transform: $transformare_i;
@@ -84,7 +84,7 @@ $ww-2: '#{calc(100 - ($timp-animatie / $timp-animatie-total * 100) + 0.01)}%';
   #{percentage(calc(($timp-animatie / $timp-animatie-total) + 0.001  ))} {
     z-index: -10;
     transform: $transformare_i;
-  } /* il ascund cat mai in spate sa nu vina peste imaginile care erau mai sus in html decat el*/
+  }
 
   #{$ww} {
     transform: $transformare_i;
@@ -95,7 +95,7 @@ $ww-2: '#{calc(100 - ($timp-animatie / $timp-animatie-total * 100) + 0.01)}%';
     z-index: 0;
     transform: scaleY(1);
     opacity: 1;
-  } /*setez z-index la 0 ca sa revina la ordinea normala de afisare*/
+  }
 
   100% {
     opacity: 1;

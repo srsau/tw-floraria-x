@@ -24,23 +24,24 @@ function compileazaScss(caleScss, caleCss) {
   }
 
   let numeFisCss = path.basename(caleCss);
-  // todo
-  // if (fs.existsSync(caleCss)) {
-  //   const fileName =
-  //     numeFisCss.split('.')[0] +
-  //     '_' +
-  //     new Date().getTime() +
-  //     '.' +
-  //     numeFisCss.split('.')[1];
-  //   fs.copyFileSync(
-  //     caleCss,
-  //     path.join(obGlobal.folderBackup, 'resurse/css', fileName)
-  //   );
-  // }
+
+  if (fs.existsSync(caleCss)) {
+    const fileName =
+      numeFisCss.split('.')[0] +
+      '_' +
+      new Date().getTime() +
+      '.' +
+      numeFisCss.split('.')[1];
+    fs.copyFileSync(
+      caleCss,
+      path.join(obGlobal.folderBackup, 'resurse/css', fileName)
+    );
+  }
   const rez = sass.compile(caleScss, { sourceMap: true });
   fs.writeFileSync(caleCss, rez.css);
 }
 
+// etapa_5 3
 function initCompileazaScss() {
   const vFisiere = fs.readdirSync(obGlobal.folderScss);
   for (let numeFis of vFisiere) {
@@ -60,6 +61,7 @@ function initCompileazaScss() {
   });
 }
 
+// etapa_4: 20
 function initBackup() {
   vect_foldere = ['temp', 'backup'];
 

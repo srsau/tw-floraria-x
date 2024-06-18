@@ -1,3 +1,4 @@
+/* etapa_2: 2.2 */
 @media screen and (max-width: 1200px) {
   html {
     --font-size: 14px;
@@ -20,6 +21,7 @@
     --dim-spatiere: 2rem;
     --dim-grid-gap: 1rem;
   }
+  /* etapa_2: 2.3 */
   #grid-pagina * {
     animation: none !important;
     transition: none !important;

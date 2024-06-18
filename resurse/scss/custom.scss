@@ -1,15 +1,16 @@
 @use '../../node_modules/bootstrap/scss/bootstrap.scss' with (
   $primary: #684a8d,
   $secondary: #9f86cc,
-
-  $grid-breakpoints: (
-    xs: 0,
-    sm: 550px,
-    md: 800px,
-    lg: 1000px,
-    xl: 1250px,
-    xxl: 1350px,
-  ),
+  // etapa_5 bootstrap
+  $grid-breakpoints:
+    (
+      xs: 0,
+      sm: 550px,
+      md: 800px,
+      lg: 1000px,
+      xl: 1250px,
+      xxl: 1350px,
+    ),
   $form-text-color: yellow,
   $font-family-sans-serif: 'Roboto',
 

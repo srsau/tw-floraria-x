@@ -25,6 +25,7 @@ const { catchAll } = require('./module_proprii/controller/all.js');
 
 AccesBD.getInstanta();
 
+// etapa_4: 12
 obGlobal = {
   obErori: null,
   obImagini: null,
@@ -34,7 +35,7 @@ obGlobal = {
 };
 
 initBackup();
-initError();
+initError(); // etapa_4: 13
 initImagini();
 initCompileazaScss();
 
@@ -66,18 +67,22 @@ app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// etapa_4: 2,3,4
 console.log('Folder proiect: ', __dirname);
 console.log('Cale fisier: ', __filename);
 console.log('Director de lucru: ', process.cwd());
 
 app.set('view engine', 'ejs');
 
+// etapa_4: 17
 app.get(new RegExp('^/resurse/[a-zA-Z0-9_/-]+/$'), function (req, res) {
   afisareEroare(res, 403);
 });
 
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
+
+// etapa_4: 18
 app.get('/favicon.ico', function (req, res) {
   res.sendFile(path.join(__dirname), 'resurse/ico/favicon.ico');
 });
@@ -86,6 +91,8 @@ app.get('*/galerie-animata.css.map', function (req, res) {
   res.sendFile(path.join(__dirname, 'temp/galerie-animata.css.map'));
 });
 
+// etapa_4: 8
+// etapa_4: 9
 app.get(['/', '/home', '/index'], async function (req, res) {
   console.log(obGlobal.obImagini.imagini);
   res.render('pagini/index.ejs', {
@@ -126,6 +133,7 @@ app.get('/logout', logout_user);
 
 app.get('*/galerie-animata.css', galerieAnimata);
 
+// etapa_4: 19
 app.get('/*.ejs', function (req, res) {
   afisareEroare(res, 400);
 });
@@ -141,6 +149,7 @@ app.get('/react-app', (req, res, next) => {
   // res.sendFile(path.join(__dirname, 'react-app/dist', 'index.html'));
 });
 
+// etapa_4: 9
 app.get(['/*'], catchAll);
 
 app.listen(8000);

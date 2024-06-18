@@ -172,7 +172,6 @@ nav {
         &:hover {
           + .submeniu {
             display: block;
-            // border pentru deosebirea submeniului pe mobile
             border: 1px solid var(--highlight);
           }
         }
@@ -217,6 +216,7 @@ nav {
   transition: all 0.3s ease;
 
   @for $i from 1 through 3 {
+    // <!-- etapa_3: task bonus -->
     $delay: 0.15s * $i;
 
     &:nth-child(#{$i}) {
@@ -239,6 +239,7 @@ nav {
 
 @keyframes aparitie-animatie {
   0% {
+    // <!-- etapa_3: task bonus -->
     background-color: var(--black);
     transform: scale(0);
     opacity: 0;

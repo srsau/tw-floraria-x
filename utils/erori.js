@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+// etapa_4: 14
 function afisareEroare(res, _identificator, _titlu, _text, _imagine) {
   let eroare = obGlobal.obErori.info_erori.find(
     (el) => el.identificator === _identificator

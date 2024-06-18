@@ -12,11 +12,13 @@
 }
 
 #grid-galerie img {
-  transition: transform 0.8s ease, opacity 0.8s ease, border-radius 0.8s ease;
+  transition: transform 0.125s ease, opacity 0.125s ease,
+    border-radius 0.125s ease;
   transform-origin: top center;
 }
 
 #grid-galerie img:hover {
+  /* etapa_5 galerie statica */
   transform: scale(1.4);
   opacity: 0.5;
   border-radius: 15px;

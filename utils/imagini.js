@@ -30,7 +30,7 @@ function initImagini() {
 
     sharp(caleFisAbs).resize(300).toFile(caleFisMediuAbs);
     sharp(caleFisAbs).resize(200).toFile(caleFisMediuMic);
-
+    // etapa_5 galerie statica
     imag.fisier_mediu = path
       .join('/', caleGalerie, 'mediu', numeFis + '.webp')
       .replace(/\\/g, '/');
@@ -44,6 +44,7 @@ function initImagini() {
   }
 }
 
+// etapa_5 galerie animata
 function galerieAnimata(req, res) {
   var sirScss = fs
     .readFileSync(
@@ -55,12 +56,11 @@ function galerieAnimata(req, res) {
   var indiceAleator = Math.floor(Math.random() * varianteNr.length);
   var nrImagini = varianteNr[indiceAleator];
 
-  rezScss = ejs.render(sirScss, { nrImagini });
-  console.log(rezScss);
+  var rezScss = ejs.render(sirScss, { nrImagini });
   var caleScss = path.join(__dirname, 'temp/galerie_animata.scss');
   fs.writeFileSync(caleScss, rezScss);
   try {
-    rezCompilare = sass.compile(caleScss, { sourceMap: true });
+    var rezCompilare = sass.compile(caleScss, { sourceMap: true });
 
     var caleCss = path.join(__dirname, 'temp/galerie_animata.css');
     fs.writeFileSync(caleCss, rezCompilare.css);

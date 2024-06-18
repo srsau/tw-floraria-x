@@ -1,3 +1,4 @@
+/* etapa_5 hr */
 hr {
   border-width: 1px;
   border-color: var(--culoare-1);
@@ -18,7 +19,7 @@ hr:after {
   padding: 0 2rem;
 }
 
-/* text-reflectat */
+/* etapa_5 reflexie text-reflectat */
 
 #container {
   padding: var(--padding-1);
@@ -40,7 +41,7 @@ hr:after {
   width: 100%;
   position: absolute;
   left: 100%;
-  transform: skewY(30deg) rotateY(180deg) translate(-10px, -6px);
+  transform: skewY(30deg) rotateY(180deg) translate(-10px, -200px px);
 }
 
 #text:hover {

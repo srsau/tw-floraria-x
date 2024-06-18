@@ -58,19 +58,21 @@
     margin-right: 2.5cm;
   }
 
-  @page {
-    @bottom-left-corner {
+  @media print {
+    body::before {
       content: 'Elisei Sergiu';
-      width: 100px;
-      height: 2cm;
-      border: 2px double black;
-      opacity: 0.65;
       position: fixed;
-      left: 20px;
       bottom: 20px;
+      left: 20px;
+      width: 200px;
+      height: 2cm;
+      opacity: 0.5;
       font-size: 12px;
       padding: 5px;
       color: black;
+      border: 2px double black;
+      z-index: 1000; /* Ensures the watermark is above other content */
+      pointer-events: none; /* Prevents interaction */
     }
   }
 }

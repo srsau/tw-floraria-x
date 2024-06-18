@@ -19,21 +19,25 @@
 
         <section id="welcome">
           <h2>Magazin online de flori premium</h2>
-          <video controls="controls" class="poster-video" preload="metadata">
-            <source src="/resurse/video/poster_video.mp4" type="video/mp4" />
-            <source src="/resurse/video/poster_video.ogv" type="video/ogv" />
-            <track default src="/resurse/video/tracks/captions-video.vtt" kind="captions" srclang="ro" label="romana" />
-            <track src="/resurse/video/tracks/captions-video-en.vtt" kind="captions" srclang="en" label="engleza" />
-          </video>
-          <p>
-            Cumpără <b>flori de cea mai bună calitate</b> de la Floraria X.
-            Oferim
-            <!-- etapa_1: 9 -->
-            trandafiri, lalele și buchete impresionante, livrate
-            <!-- etapa_1: 10 -->
-            <em>în doar 4 ore</em> în București cu
-            <a href="https://www.fancourier.ro/" target="_blank">Fan Courier</a>.
-          </p>
+          <div class="layout-video">
+
+            <!-- etapa_4: video -->
+            <video controls="controls" class="poster-video" preload="metadata">
+              <source src="/resurse/video/poster_video.mp4" type="video/mp4" />
+              <source src="/resurse/video/poster_video.ogv" type="video/ogv" />
+              <track default src="/resurse/video/tracks/captions-video.vtt" kind="captions" srclang="ro" label="romana" />
+              <track src="/resurse/video/tracks/captions-video-en.vtt" kind="captions" srclang="en" label="engleza" />
+            </video>
+            <p>
+              <a href="/produse">Cumpără</a> <b>flori de cea mai bună calitate</b> de la Floraria X.
+              Oferim
+              <!-- etapa_1: 9 -->
+              trandafiri, lalele și buchete impresionante, livrate
+              <!-- etapa_1: 10 -->
+              <em>în doar 4 ore</em> în București cu
+              <a href="https://www.fancourier.ro/" target="_blank">Fan Courier</a>.
+            </p>
+          </div>
 
           <p>
             Explorează colecția noastră și comandă acum cele mai frumoase
@@ -71,6 +75,7 @@
 
             <!-- etapa_1: 11c -->
             <div class="container-iframe">
+              <!-- etapa 2: taburi iframe -->
               <div class="taburi-iframe">
                 <a href="https://www.youtube.com/embed/R7im9ehytNc?si=PPxdk50vYHnk3nGo
                   " target="ifr-video">Trandafiri</a>
@@ -91,6 +96,7 @@
               <h3>Calcularea Prețului</h3>
               <p>Pentru a afla prețul total al buchetului tău:</p>
 
+              <!-- etapa_2: bonus -->
               <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <mi>preț_total</mi>
                 <mo>=</mo>
@@ -126,6 +132,7 @@
         </aside>
       </div>
       <div id="bloc2">
+        <!-- etapa 2: tabel -->
         <div class="tabel-wrapper">
           <table>
             <caption>
@@ -179,11 +186,11 @@
         velit tenetur doloremque vitae inventore!
       </div>
       <div id="bloc6">
+        <!-- etapa_4: 16 -->
         <p><b>IP:</b> <%- locals.ip %></p>
       </div>
       <div id="bloc7">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, rerum
-        velit tenetur doloremque vitae inventore!
+        <%- include("../fragmente/galerie_animata.ejs")  %>
       </div>
       <div id="bloc8">
         <%- include("../fragmente/galerie-statica.ejs") %>
@@ -191,7 +198,6 @@
 
     </div>
   </main>
-  <%- include("../fragmente/galerie_animata.ejs")  %>
 
   <!-- etapa_1: 8 -->
   <figure>
