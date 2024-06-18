@@ -1,0 +1,47 @@
+#banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 25vw;
+  height: 25vw;
+  color: var(--white);
+  background-color: var(--culoare-secundara-3);
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: left bottom;
+  transform: scale(0);
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 2vw;
+  z-index: 9000;
+}
+
+@keyframes showBanner {
+  from {
+    opacity: 0;
+    transform: scale(0);
+    background-color: var(--culoare-secundara-3);
+  }
+  to {
+    opacity: 0.75;
+    transform: scale(1);
+    background-color: var(--culoare-1);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .banner-visible {
+    animation: showBanner 5s forwards;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #banner {
+    opacity: 0.75;
+    transform: scale(1);
+    background-color: var(--culoare-1);
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+}
+
+/* TODO animatii ecran mic etapa 6 si 7 */

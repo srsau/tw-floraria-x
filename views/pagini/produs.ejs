@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
+  <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+
+  <title>Floraria X - <% locals.detaliiProdus.nume %></title>
+
+  <%- include("../fragmente/head") %>
+  <link href="/resurse/css/produse.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <%- include("../fragmente/header") %>
+  <% const prod=locals.detaliiProdus %>
+  <main>
+    <section class="product-section">
+      <h2>Pagină produs</h2>
+      <article class="produs" id="ar_ent_<%-prod.id %>">
+        <div class="card-body" style="">
+          <div class="card-title">
+            <h3 class="nume"><span class="nume_carac">Nume:</span> <a href="/produs/<%-prod.id %>"><span class="val-nume"><%- prod.nume%></span></a></h3>
+          </div>
+
+          <div>
+            <p><span class="nume_carac">Categorie: </span> <span class="val-categorie"><%- prod.categorie%></span> </p>
+            <figure style="width: fit-content;">
+              <img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]" />
+              <figcaption><span class="nume_carac">Descriere: </span><span class="val-desc">
+                  <%- prod.descriere %>
+                </span>
+              </figcaption>
+            </figure>
+
+            <p class="pret"><span class="nume_carac">Pret: </span> <span class="val-pret"><%- prod.pret%></span></p>
+            <p class="culoare"><span class="nume_carac">Culoare predominanta:</span> <span class="val-culoare"><%- prod.culoare_predominanta%></span></p>
+            <p class="gramaj"><span class="nume_carac">Compozitie:</span> <span class="val-compozitie"><%- prod.compozitie_buchet%></span></p>
+            <p class="date"><span class="nume_carac">Data adaugarii:</span> <span class="val-date"><%- new Date(prod.data_adaugare).toLocaleDateString()%></span></p>
+            <p><span class="nume_carac">Livrare astazi:</span> <time class="val-livrareAstazi"><%- prod.livrare_azi ? 'Da' : 'Nu'%></time></p>
+            <p><span class="nume_carac">Tip produs:</span> <time class="val-tipProdus"><%- prod.tip_produs%></time></p>
+            <p><span class="nume_carac">Rezistenta zile:</span> <time class="val-rezistentaZile"><%- prod.rezistenta_zile%></time></p>
+          </div>
+
+
+        </div>
+
+    </section>
+  </main>
+
+  <%- include("../fragmente/footer") %>
+</body>
+
+</html>

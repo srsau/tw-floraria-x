@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <%- include("../fragmente/head.ejs") %>
+  <link rel="stylesheet" href="/resurse/css/galerie-animata.css" type="text/css" />
+
+  <meta name="keywords" content="flori, magazin flori, trandafiri, lalele, buchet de flori" />
+  <meta name="description" content="Cumpara flori de calitate superioara. Livram buchetul in 4 ore in Bucuresti" />
+  <title>Floraria X</title>
+</head>
+
+<body>
+  <%- include("../fragmente/header.ejs") %>
+  <main>
+    <iframe src=<%- locals.reactAppSrc %> style="width: 100%; height: 1000px; border: none;"></iframe>
+  </main>
+
+
+  <%- include("../fragmente/footer.ejs") %>
+</body>
+
+</html>

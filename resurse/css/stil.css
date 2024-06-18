@@ -217,3 +217,21 @@ figure img {
 figure figcaption {
   text-align: center;
 }
+
+.login-form {
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+}
+
+.login-form form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media screen and (max-width: 1200px) {
+  .login-form {
+    display: none;
+  }
+}

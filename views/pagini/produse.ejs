@@ -5,7 +5,7 @@
   <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
   <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
   <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
-  <title>Cofetăria Dulcelind - home</title>
+  <title>Floraria X - produse</title>
   <%- include("../fragmente/head") %>
 
   <script type="text/javascript" src=/resurse/js/produse.js></script>
@@ -43,27 +43,7 @@
           </datalist>
         </div>
 
-        <!-- <div class="col-md-6 mb-3 m-auto">Livrare astazi:
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="i_rad1" name="gr_rad" value="Da">
-            <label class="form-check-label" for="i_rad1">Da</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="i_rad2" name="gr_rad" value="Nu">
-            <label class="form-check-label" for="i_rad2">Nu</label>
-          </div>
-        </div> -->
-        <!-- <div class="col-md-6 mb-3 m-auto">
-          Livrare astazi:
-          <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-primary">
-              <input type="radio" name="gr_rad" id="i_rad1" value="Da"> Da
-            </label>
-            <label class="btn btn-outline-primary">
-              <input type="radio" name="gr_rad" id="i_rad2" value="Nu"> Nu
-            </label>
-          </div>
-        </div> -->
+
         <div class="btn-group-toggle col-md-6 mb-3 m-auto" data-toggle="buttons">
           <div>Livrare astazi:</div>
 
@@ -74,26 +54,6 @@
           <label class="btn btn-outline-danger" for="danger-outlined">Nu</label>
 
         </div>
-
-
-
-
-
-        <!-- <div>Tip produs
-          <input type="checkbox" id="floare singura" name="tip_produs" value="floare singura" checked>
-          <label for="floare singura">floare singura</label><br>
-          <input type="checkbox" id="buchet" name="tip_produs" value="buchet" checked>
-          <label for="buchet">buchet</label><br>
-          <input type="checkbox" id="ghiveci" name="tip_produs" value="ghiveci" checked>
-          <label for="ghiveci">ghiveci</label><br><br>
-        </div> -->
-        <!-- 
-        <div>
-          <label for="inp-desc">Descriere:</label>
-          <textarea id="inp-desc" name="desc" rows="1" cols="50"></textarea>
-        </div> -->
-
-
 
         <div class="col-md-6 mb-3 m-auto">
 
@@ -121,22 +81,6 @@
             <label class="form-check-label" for="ghiveci">ghiveci</label>
           </div>
         </div>
-
-        <!-- 
-        <div>
-          <label for="select-simplu">Rezistenta zile:</label>
-          <select id="select-simplu">
-            <option value="nimic" selected>Alege o opțiune</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-          </select>
-        </div> -->
-
 
 
         <div class="col-md-6 mb-3 m-auto">
@@ -208,34 +152,40 @@
           const livrareAzi = prod.livrare_azi ? 'Da' : 'Nu'
           %>
 
+        <div class="card" style="opacity: 0;">
+          <article class="produs" id="ar_ent_<%-prod.id %>">
+            <div class="card-body">
+              <div class="card-title">
+                <h3 class="nume"><span class="nume_carac">Nume:</span> <a href="/produs/<%-prod.id %>"><span class="val-nume"><%- prod.nume%></span></a></h3>
+              </div>
 
-        <article class="produs" id="ar_ent_<%-prod.id %>">
-          <h3 class="nume"><span class="nume_carac">Nume:</span> <a href="/produs/<%-prod.id %>"><span class="val-nume"><%- prod.nume%></span></a></h3>
-          <div class="part-container">
-            <div class="part-1">
-              <p><span class="nume_carac">Categorie: </span> <span class="val-categorie"><%- prod.categorie%></span> </p>
-              <figure>
-                <a href="/produs/<%-prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]" /></a>
-                <figcaption><span class="nume_carac">Descriere: </span><span class="val-desc">
-                    <%- prod.descriere %>
-                  </span>
-                </figcaption>
-              </figure>
+              <div class="part-container">
+                <div class="part-1">
+                  <p><span class="nume_carac">Categorie: </span> <span class="val-categorie"><%- prod.categorie%></span> </p>
+                  <figure>
+                    <a href="/produs/<%-prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]" /></a>
+                    <figcaption><span class="nume_carac">Descriere: </span><span class="val-desc">
+                        <%- prod.descriere %>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="part2">
+                  <p class="pret"><span class="nume_carac">Pret: </span> <span class="val-pret"><%- prod.pret%></span></p>
+                  <p class="culoare"><span class="nume_carac">Culoare predominanta:</span> <span class="val-culoare"><%- prod.culoare_predominanta%></span></p>
+                  <p class="gramaj"><span class="nume_carac">Compozitie:</span> <span class="val-compozitie"><%- prod.compozitie_buchet%></span></p>
+                  <p class="date"><span class="nume_carac">Data adaugarii:</span> <span class="val-date"><%- dataAfisata%></span></p>
+                  <p><span class="nume_carac">Livrare astazi:</span> <time class="val-livrareAstazi"><%- livrareAzi%></time></p>
+                  <p><span class="nume_carac">Tip produs:</span> <time class="val-tipProdus"><%- prod.tip_produs%></time></p>
+                  <p><span class="nume_carac">Rezistenta zile:</span> <time class="val-rezistentaZile"><%- prod.rezistenta_zile%></time></p>
+                </div>
+              </div>
+
+
             </div>
-
-            <div class="part2">
-              <p class="pret"><span class="nume_carac">Pret: </span> <span class="val-pret"><%- prod.pret%></span></p>
-              <p class="culoare"><span class="nume_carac">Culoare predominanta:</span> <span class="val-culoare"><%- prod.culoare_predominanta%></span></p>
-              <p class="gramaj"><span class="nume_carac">Compozitie:</span> <span class="val-compozitie"><%- prod.compozitie_buchet%></span></p>
-              <p class="date"><span class="nume_carac">Data adaugarii:</span> <span class="val-date"><%- dataAfisata%></span></p>
-              <p><span class="nume_carac">Livrare astazi:</span> <time class="val-livrareAstazi"><%- livrareAzi%></time></p>
-              <p><span class="nume_carac">Tip produs:</span> <time class="val-tipProdus"><%- prod.tip_produs%></time></p>
-              <p><span class="nume_carac">Rezistenta zile:</span> <time class="val-rezistentaZile"><%- prod.rezistenta_zile%></time></p>
-            </div>
-          </div>
-
-
-        </article>
+          </article>
+        </div>
         <% }%>
       </div>
     </section>

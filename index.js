@@ -4,72 +4,23 @@ const path = require('path');
 const sharp = require('sharp');
 const sass = require('sass');
 const ejs = require('ejs');
-const Client = require('pg').Client;
+const AccesBD = require('./module_proprii/accesbd.js');
+const {
+  getAllFlowers,
+  getCategories,
+  getCategory,
+  getProductDetails,
+  getCategoriesOptions,
+  getCompozitii,
+} = require('./module_proprii/produse_db.js');
+const session = require('express-session');
 
-var client = new Client({
-  database: 'tw_florarie',
-  user: 'postgres',
-  password: 'admin',
-  host: 'localhost',
-  port: 5432,
-});
-client.connect();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { Utilizator } = require('./module_proprii/utilizator.js');
+const formidable = require('formidable');
 
-// ----
-const getCategories = async () => {
-  let result;
-  try {
-    result = await client.query('select distinct categorie from flori');
-  } catch (e) {
-    console.error(e);
-  }
-  return result.rows;
-};
-
-const getAllFlowers = async () => {
-  let result;
-  try {
-    result = await client.query('select * from flori');
-  } catch (e) {
-    console.error(e);
-  }
-  return result.rows;
-};
-
-const getCategory = async (categorie) => {
-  let result;
-  try {
-    result = await client.query(
-      `select * from flori where categorie='${categorie}'`
-    );
-  } catch (e) {
-    console.error(e);
-  }
-  return result.rows;
-};
-
-const getProductDetails = async (productId) => {
-  let result;
-  try {
-    result = await client.query(`select * from flori where id='${productId}'`);
-  } catch (e) {
-    console.error(e);
-  }
-  return result.rows;
-};
-
-const getCompozitii = async () => {
-  let result;
-  try {
-    result = await client.query(`
-    select distinct unnest(compozitie_buchet) from flori where compozitie_buchet is not null;
-  `);
-  } catch (e) {
-    console.error(e);
-  }
-  return result.rows.map((element) => element.unnest);
-};
-// ----
+AccesBD.getInstanta();
 
 obGlobal = {
   obErori: null,
@@ -90,6 +41,37 @@ initError();
 initImagini();
 
 app = express();
+
+app.use(
+  session({
+    // aici se creeaza proprietatea session a requestului (pot folosi req.session)
+    secret: 'abcdefg', //folosit de express session pentru criptarea id-ului de sesiune
+    resave: true,
+    saveUninitialized: false,
+  })
+);
+
+app.use('/*', async function (req, res, next) {
+  const categorii = await getCategoriesOptions();
+  res.locals.categorii = categorii;
+  // res.locals.optiuniMeniu = obGlobal.optiuniMeniu;
+  // res.locals.Drepturi = Drepturi;
+  if (req.session.utilizator) {
+    req.utilizator = res.locals.utilizator = new Utilizator(
+      req.session.utilizator
+    );
+  }
+  next();
+});
+
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+  })
+);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 console.log('Folder proiect: ', __dirname);
 console.log('Cale fisier: ', __filename);
 console.log('Director de lucru: ', process.cwd());
@@ -104,21 +86,27 @@ app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 app.get(['/', '/home', '/index'], async function (req, res) {
-  const categorii = await getCategories();
-  const categoriiArr = categorii.map((c) => ({
-    href: encodeURIComponent(c.categorie),
-    text: c.categorie,
-  }));
-
   res.render('pagini/index.ejs', {
     ip: req.ip,
-    categorii: categoriiArr,
     imagini: obGlobal.obImagini.imagini,
   });
 });
 
+app.get('/produs/:id', async function (req, res) {
+  let details = null;
+
+  if (req.params.id) {
+    details = await getProductDetails(req.params.id);
+  }
+
+  console.log({ details });
+  res.render('pagini/produs.ejs', {
+    ip: req.ip,
+    detaliiProdus: details[0],
+  });
+});
+
 app.get('/produse', async function (req, res) {
-  console.log('aa', req.query);
   let rezultate = null;
 
   if (req.query.categorie) {
@@ -127,42 +115,149 @@ app.get('/produse', async function (req, res) {
     rezultate = await getAllFlowers();
   }
 
-  const categorii = await getCategories();
-  const categoriiArr = categorii.map((c) => ({
-    href: encodeURIComponent(c.categorie),
-    text: c.categorie,
-  }));
-
   const compozitii = await getCompozitii();
-  console.log({ compozitii });
 
-  console.log({ rezultate: rezultate.length });
   res.render('pagini/produse.ejs', {
     ip: req.ip,
     produse: rezultate,
     compozitii,
-    categorii: categoriiArr,
     imagini: obGlobal.obImagini.imagini,
   });
-
-  // console.log(req.query)
-  // var conditieQuery="";
-  // if (req.query.tip){
-  //     conditieQuery=` where tip_produs='${req.query.tip}'`
-  // }
-  // client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezOptiuni){
-
-  //     client.query(`select * from prajituri ${conditieQuery}`, function(err, rez){
-  //         if (err){
-  //             console.log(err);
-  //             afisareEroare(res, 2);
-  //         }
-  //         else{
-  //             res.render("pagini/produse", {produse: rez.rows, optiuni:rezOptiuni.rows})
-  //         }
-  //     })
-  // });
 });
+
+app.get('/inregistrare', async function (req, res) {
+  let rezultate = null;
+
+  res.render('pagini/inregistrare.ejs', {
+    reactAppSrc: 'http://localhost:5173/',
+  });
+});
+
+// ---------------- UTILIZSATORI
+
+app.post('/inregistrare', function (req, res) {
+  var username;
+  var poza;
+  const newUser = req.body;
+  //4
+  console.log('Inregistrare:', req.body);
+  var utilizNou = new Utilizator();
+  var eroare = '';
+
+  utilizNou.culoare_chat = newUser.culoare;
+  utilizNou.data_nasterii = newUser.dataNasterii;
+  utilizNou.email = newUser.email;
+  utilizNou.poza = newUser.fotografie;
+  utilizNou.prenume = newUser.prenume;
+  utilizNou.setareNume = newUser.nume;
+  utilizNou.parola = newUser.parola;
+  utilizNou.setareUsername = newUser.username;
+  utilizNou.telefon = newUser.telefon;
+
+  Utilizator.getUtilizDupaUsername(
+    newUser.username,
+    {},
+    function (u, parametru, eroareUser) {
+      if (eroareUser == -1) {
+        utilizNou.salvareUtilizator();
+      } else {
+        eroare += 'Username deja existent';
+      }
+      if (eroare) {
+        res.status(400).json({ error: eroare });
+      } else {
+        res.status(200);
+      }
+    }
+  );
+});
+
+app.get('/cod/:username/:token', async function (req, res) {
+  /*TO DO parametriCallback: cu proprietatile: request (req) si token (luat din parametrii cererii)
+      setat parametriCerere pentru a verifica daca tokenul corespunde userului
+  */
+  console.log(req.params);
+
+  const categorii = await getCategoriesOptions();
+
+  try {
+    var parametriCallback = {
+      req: req,
+      token: req.params.token,
+    };
+    Utilizator.getUtilizDupaUsername(
+      req.params.username,
+      parametriCallback,
+      function (u, obparam) {
+        let parametriCerere = {
+          tabel: 'utilizatori',
+          campuri: { confirmat_mail: true },
+          conditiiAnd: [`id=${u.id}`],
+        };
+        AccesBD.getInstanta().update(
+          parametriCerere,
+          function (err, rezUpdate) {
+            if (err || rezUpdate.rowCount == 0) {
+              console.log('Cod:', err);
+              afisareEroare(res, 3);
+            } else {
+              res.render('pagini/confirmare.ejs', { categorii });
+            }
+          }
+        );
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    afisareEroare(res, 2);
+  }
+});
+
+app.post('/login', function (req, res) {
+  /*TO DO
+      testam daca a confirmat mailul
+  */
+  var username;
+  console.log('ceva');
+  var formular = new formidable.IncomingForm();
+
+  formular.parse(req, function (err, campuriText, campuriFisier) {
+    var parametriCallback = {
+      req: req,
+      res: res,
+      parola: campuriText.parola[0],
+    };
+    Utilizator.getUtilizDupaUsername(
+      campuriText.username[0],
+      parametriCallback,
+      function (u, obparam, eroare) {
+        //proceseazaUtiliz
+        let parolaCriptata = Utilizator.criptareParola(obparam.parola);
+        if (u.parola == parolaCriptata && u.confirmat_mail) {
+          u.poza = u.poza
+            ? path.join('poze_uploadate', u.username, u.poza)
+            : '';
+          obparam.req.session.utilizator = u;
+          obparam.req.session.mesajLogin = 'Bravo! Te-ai logat!';
+          obparam.res.redirect('/index');
+        } else {
+          console.log('Eroare logare');
+          obparam.req.session.mesajLogin =
+            'Date logare incorecte sau nu a fost confirmat mailul!';
+          console.log(obparam.req.session);
+          obparam.res.redirect('/index');
+        }
+      }
+    );
+  });
+});
+
+app.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.locals.utilizator = null;
+  res.render('pagini/logout');
+});
+// --------
 
 app.get('*/galerie-animata.css', function (req, res) {
   var sirScss = fs
@@ -192,6 +287,18 @@ app.get('*/galerie-animata.css', function (req, res) {
 
 app.get('/*.ejs', function (req, res) {
   afisareEroare(res, 400);
+});
+
+app.use(express.static(path.join(__dirname, 'react-app/dist')));
+
+app.get('/react-app', (req, res) => {
+  if (req.headers.referer && req.headers.referer.includes('/inregistrare')) {
+    next();
+  } else {
+    res.status(403).send('Access forbidden');
+  }
+
+  // res.sendFile(path.join(__dirname, 'react-app/dist', 'index.html'));
 });
 
 app.get(['/*'], async function (req, res) {

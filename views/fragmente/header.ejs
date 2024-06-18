@@ -1,6 +1,6 @@
 <div id="top"></div>
 <header class="header-content">
-  <nav>
+  <nav style="position:relative;">
     <!-- etapa_1: 6 -->
     <div class="hamburger-menu">
       <div class="line"></div>
@@ -23,9 +23,7 @@
         <ul class="submeniu">
           <% for (let categorie of locals.categorii) { %>
           <li>
-            <a href="/produse?categorie=<%- categorie.href %>"
-              ><%- categorie.text %></a
-            >
+            <a href="/produse?categorie=<%- categorie.href %>"><%- categorie.text %></a>
           </li>
           <% } %>
         </ul>
@@ -44,6 +42,9 @@
         </ul>
       </li>
     </ul>
+
+    <%- include("../fragmente/formular-login.ejs") %>
   </nav>
   <h1>Floraria X</h1>
+  <p id="banner">Acesta este un proiect scolar. <span id="mesaj-cookies">Acceptati cookie-urile de pe site? <button id="ok_cookies">Ok</button></span></p>
 </header>

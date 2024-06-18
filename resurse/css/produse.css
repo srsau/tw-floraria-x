@@ -11,8 +11,8 @@
 }
 
 .produs {
-  padding: var(--padding-2);
-  border: 1px solid black;
+  /* padding: var(--padding-2); */
+  /* border: 1px solid black; */
 }
 
 .part-container {
@@ -27,4 +27,8 @@
 .nume_carac {
   font-weight: bold;
   color: var(--culoare-secundara-2);
+}
+
+.product-section {
+  margin-bottom: 2rem;
 }

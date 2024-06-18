@@ -66,67 +66,20 @@ const getInputValues = () => {
 };
 
 window.addEventListener('load', function () {
-  const themeToggle = document.getElementById('themeToggle');
+  // todo mem last page display it in main page
 
-  const lightContent = '<i class="fas fa-sun"></i>';
-  const darkContent = '<i class="fas fa-moon"></i>';
-
-  const currentTheme = localStorage.getItem('theme');
-
-  const setColors = (colors) => {
-    for (const color in colors) {
-      document.body.style.setProperty(color, colors[color]);
-    }
+  // task card
+  const runAnimation = () => {
+    const cards = document.querySelectorAll('.card');
+    const t = 100;
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = 1;
+        card.style.transition = 'opacity 0.5s';
+      }, index * t);
+    });
   };
-
-  const setLightColors = () => {
-    setColors(lightModeColors);
-  };
-
-  const setDarkColors = () => {
-    setColors(darkModeColors);
-  };
-
-  if (currentTheme) {
-    document.body.classList.add(currentTheme);
-    if (currentTheme === 'dark-theme') {
-      themeToggle.innerHTML = darkContent;
-      setDarkColors();
-      console.log('1');
-    } else {
-      console.log('2');
-      themeToggle.innerHTML = lightContent;
-      setLightColors();
-    }
-  } else {
-    document.body.classList.add('light-theme');
-  }
-
-  themeToggle.addEventListener('click', () => {
-    const isDarkMode = document.body.classList.contains('dark-theme');
-
-    if (isDarkMode) {
-      setLightColors();
-      document.body.classList.remove('dark-theme');
-      document.body.classList.add('light-theme');
-      localStorage.setItem('theme', 'light-theme');
-      themeToggle.innerHTML = lightContent;
-      console.log('aa');
-    } else {
-      setDarkColors();
-      document.body.classList.remove('light-theme');
-      document.body.classList.add('dark-theme');
-      localStorage.setItem('theme', 'dark-theme');
-      themeToggle.innerHTML = darkContent;
-    }
-
-    // const newTheme = isDarkMode ? 'light-theme' : 'dark-theme';
-    // document.body.classList.toggle('dark-theme');
-    // themeToggle.innerHTML = isDarkMode ? darkContent : lightContent;
-
-    // const theme = isDarkMode ? 'dark-theme' : 'light-theme';
-    // localStorage.setItem('theme', theme);
-  });
+  runAnimation();
 
   getDescriereElement().addEventListener('input', function () {
     const textarea = getDescriereElement();
@@ -200,8 +153,12 @@ window.addEventListener('load', function () {
         inputValues.selectedOptions.every((comp) => !compozitie.includes(comp))
       ) {
         produs.style.display = 'block';
+        console.log({ produs });
+        produs.parentElement.style.display = 'block';
       } else {
         produs.style.display = 'none';
+        produs.parentElement.style.display = 'none';
+        produs.parentElement.style.opacity = '0';
       }
     }
   };
@@ -231,6 +188,7 @@ window.addEventListener('load', function () {
     var produse = document.getElementsByClassName('produs');
     for (let produs of produse) {
       produs.style.display = 'block';
+      produs.parentElement.style.display = 'block';
     }
   };
 
