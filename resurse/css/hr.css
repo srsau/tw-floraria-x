@@ -41,7 +41,7 @@ hr:after {
   width: 100%;
   position: absolute;
   left: 100%;
-  transform: skewY(30deg) rotateY(180deg) translate(-10px, -200px px);
+  transform: skewY(30deg) rotateY(180deg) translate(-10px, 20px);
 }
 
 #text:hover {

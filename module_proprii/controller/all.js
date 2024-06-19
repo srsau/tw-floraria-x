@@ -1,13 +1,7 @@
 const { afisareEroare } = require('../../utils/erori');
-const { getCategories } = require('../produse_db');
 
 async function catchAll(req, res) {
-  const categorii = await getCategories();
-  const categoriiArr = categorii.map((c) => ({
-    href: encodeURIComponent(c.categorie),
-    text: c.categorie,
-  }));
-  const locals = { categorii: categoriiArr };
+  const locals = {};
 
   try {
     res.render('pagini' + req.url, locals, function (err, rezultatRandare) {

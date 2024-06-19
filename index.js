@@ -22,6 +22,7 @@ const { renderProdusePage } = require('./module_proprii/controller/produse.js');
 const { galerieAnimata, initImagini } = require('./utils/imagini.js');
 const { initCompileazaScss, initBackup } = require('./utils/scss.js');
 const { catchAll } = require('./module_proprii/controller/all.js');
+const { InitOferta, getOfferData } = require('./module_proprii/oferte.js');
 
 AccesBD.getInstanta();
 
@@ -32,13 +33,17 @@ obGlobal = {
   folderScss: path.join(__dirname, 'resurse/scss'),
   folderCss: path.join(__dirname, 'resurse/css'),
   folderBackup: path.join(__dirname, 'backup'),
+  lastCategory: '',
+  lastOffer: {},
 };
 
 initBackup();
 initError(); // etapa_4: 13
 initImagini();
 initCompileazaScss();
+InitOferta();
 
+getOfferData();
 const app = express();
 
 app.use(
@@ -94,10 +99,10 @@ app.get('*/galerie-animata.css.map', function (req, res) {
 // etapa_4: 8
 // etapa_4: 9
 app.get(['/', '/home', '/index'], async function (req, res) {
-  console.log(obGlobal.obImagini.imagini);
   res.render('pagini/index.ejs', {
     ip: req.ip,
     imagini: obGlobal.obImagini.imagini,
+    lastOffer: obGlobal.lastOffer,
   });
 });
 // todo: taguri html

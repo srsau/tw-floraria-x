@@ -61,6 +61,8 @@ const getCompozitii = async () => {
   return result.rows.map((element) => element.unnest);
 };
 
+// <!-- etapa_6 1 -->
+
 const getCategoriesOptions = async () => {
   const categorii = await getCategories();
   const categoriiArr = categorii.map((c) => ({
@@ -77,4 +79,5 @@ module.exports = {
   getProductDetails,
   getCompozitii,
   getCategoriesOptions,
+  getConfig,
 };

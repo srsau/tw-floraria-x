@@ -24,9 +24,7 @@ window.addEventListener('load', function () {
     if (currentTheme === 'dark-theme') {
       themeToggle.innerHTML = darkContent;
       setDarkColors();
-      console.log('1');
     } else {
-      console.log('2');
       themeToggle.innerHTML = lightContent;
       setLightColors();
     }
@@ -43,7 +41,6 @@ window.addEventListener('load', function () {
       document.body.classList.add('light-theme');
       localStorage.setItem('theme', 'light-theme');
       themeToggle.innerHTML = lightContent;
-      console.log('aa');
     } else {
       setDarkColors();
       document.body.classList.remove('light-theme');

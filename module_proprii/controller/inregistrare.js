@@ -45,8 +45,6 @@ async function confirma_cod(req, res) {
     */
   console.log(req.params);
 
-  const categorii = await getCategoriesOptions();
-
   try {
     var parametriCallback = {
       req: req,
@@ -68,7 +66,7 @@ async function confirma_cod(req, res) {
               console.log('Cod:', err);
               afisareEroare(res, 3);
             } else {
-              res.render('pagini/confirmare.ejs', { categorii });
+              res.render('pagini/confirmare.ejs');
             }
           }
         );

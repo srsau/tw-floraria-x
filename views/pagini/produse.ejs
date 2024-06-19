@@ -15,32 +15,34 @@
 
 <body>
   <%- include("../fragmente/header") %>
+  <!-- etapa_6 1 -->
 
   <main>
     <div class="container">
       <div class="row">
+        <!-- etapa 6 css -->
         <div class="col-md-6 mb-3">
           <label for="inp-nume">Nume:</label>
           <input type="text" class="form-control" id="inp-nume">
         </div>
 
-
         <div class="col-md-6 mb-3">
           <label for="inp-pret" class="mb-2"> Pret minim:</label><br />
           <div class="d-flex align-items-center gap-2">
-            <span>0</span>
-            <input type="range" class="form-range" id="inp-pret" value="0" min="0" max="200">
-            <span>200</span>
+            <span><%-parseInt(locals.pretMinim)%></span>
+            <input type="range" class="form-range" id="inp-pret" value="0" min="<%-parseInt(locals.pretMinim)%>" max="<%-parseInt(locals.pretMaxim)%>">
+            <span><%-parseInt(locals.pretMaxim)%></span>
           </div>
-          <span id="infoRange">(0)</span>
+          <span id="infoRange">(<%-parseInt(locals.pretMinim)%>)</span>
         </div>
-
         <div class="col-md-6 mb-3 m-auto">
           <label for="inp-culoare-pred">Alege culoare predominanta din lista:</label>
           <input list="culori" class="form-control" id="inp-culoare-pred" name="culoare-predominanta" />
           <datalist id="culori">
-            <option value="mov"></option>
-            <option value="rosu"></option>
+
+            <% for (let opt of locals.culoriPredominante) { %>
+            <option value="<%- opt %>"></option>
+            <% } %>
           </datalist>
         </div>
 
@@ -48,11 +50,10 @@
         <div class="btn-group-toggle col-md-6 mb-3 m-auto" data-toggle="buttons">
           <div>Livrare astazi:</div>
 
-          <input type="radio" class="btn-check" name="gr_rad" id="success-outlined" value="Da">
-          <label class="btn btn-outline-success" for="success-outlined">Da</label>
-
-          <input type="radio" class="btn-check" name="gr_rad" id="danger-outlined" value="Nu">
-          <label class="btn btn-outline-danger" for="danger-outlined">Nu</label>
+          <% for (let opt of locals.livrareAstazi) { %>
+          <input type="radio" class="btn-check" name="gr_rad" id="<%- opt === 'Da' ? 'success-outlined' : 'danger-outlined' %>" value="<%- opt %>">
+          <label class="btn <%- opt === 'Da' ? 'btn-outline-success' : 'btn-outline-danger' %>" for="<%- opt === 'Da' ? 'success-outlined' : 'danger-outlined' %>"><%- opt %></label>
+          <% } %>
 
         </div>
 
@@ -69,18 +70,13 @@
           <div>
             Tip produs
           </div>
+          <% for (let opt of locals.tipProdus) { %>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="floare-singura" name="tip_produs" value="floare singura" checked>
-            <label class="form-check-label" for="floare-singura">floare singura</label>
+            <input class="form-check-input" type="checkbox" id="<%- opt %>" name="tip_produs" value="<%- opt %>" checked>
+            <label class="form-check-label" for="<%- opt %>"><%- opt %></label>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="buchet" name="tip_produs" value="buchet" checked>
-            <label class="form-check-label" for="buchet">buchet</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="ghiveci" name="tip_produs" value="ghiveci" checked>
-            <label class="form-check-label" for="ghiveci">ghiveci</label>
-          </div>
+          <% } %>
+
         </div>
 
 
@@ -97,13 +93,9 @@
           <label for="select-simplu">Rezistenta zile:</label>
           <select class="form-control" id="select-simplu">
             <option value="nimic" selected>Alege o opțiune</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <% for (let opt of locals.optiuniZile) { %>
+            <option value="<%- opt %>"><%- opt %></option>
+            <% } %>
           </select>
         </div>
 

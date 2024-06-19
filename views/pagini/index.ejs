@@ -8,15 +8,21 @@
   <meta name="keywords" content="flori, magazin flori, trandafiri, lalele, buchet de flori" />
   <meta name="description" content="Cumpara flori de calitate superioara. Livram buchetul in 4 ore in Bucuresti" />
   <title>Floraria X</title>
+  <script src=/resurse/js/oferte.js></script>
 </head>
 
 <body>
   <%- include("../fragmente/header.ejs") %>
   <main>
+    <div class="container mt-4 alert alert-info text-center" id="banner-oferta" style="display: none;">
+      <div id="oferta-container" role="alert">
+      </div>
+      <p><strong>Timp ramas:</strong> <span id="timer"></span></p>
+    </div>
+
     <div id="grid-pagina">
       <div id="bloc1">
         <!-- etapa_1: 5 -->
-
         <section id="welcome">
           <h2>Magazin online de flori premium</h2>
           <div class="layout-video">

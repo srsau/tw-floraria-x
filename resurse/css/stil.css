@@ -268,3 +268,10 @@ figure figcaption {
     display: none;
   }
 }
+#timer.warning {
+  color: red;
+}
+.badge-custom {
+  background-color: var(--culoare-1);
+  color: white;
+}

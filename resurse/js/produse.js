@@ -19,12 +19,10 @@ const getInputValues = () => {
   var pret = parseInt(getPretElement().value);
 
   var culoarePredominanta = getCuloarePredElement().value.toLowerCase().trim();
-  console.log({ culoarePredominanta });
   if (!culoarePredominanta || !['mov', 'rosu'].includes(culoarePredominanta)) {
     culoarePredominanta = null;
     // return;
   }
-  console.log({ culoarePredominanta });
 
   var livrareAstaziElement = getLivrareAstaziElement();
   let livrareAstazi;
@@ -66,6 +64,8 @@ const getInputValues = () => {
 };
 
 window.addEventListener('load', function () {
+  const produseInitiale = document.getElementsByClassName('produs');
+
   // todo mem last page display it in main page
 
   // task card
@@ -143,7 +143,7 @@ window.addEventListener('load', function () {
           : culoare === inputValues.culoarePredominanta;
 
       if (
-        nume.startsWith(inputValues.nume) &&
+        nume.includes(inputValues.nume) &&
         desc.includes(inputValues.desc) &&
         pret > inputValues.pret &&
         condCuloare &&
@@ -153,7 +153,6 @@ window.addEventListener('load', function () {
         inputValues.selectedOptions.every((comp) => !compozitie.includes(comp))
       ) {
         produs.style.display = 'block';
-        console.log({ produs });
         produs.parentElement.style.display = 'block';
       } else {
         produs.style.display = 'none';
@@ -161,6 +160,7 @@ window.addEventListener('load', function () {
         produs.parentElement.style.opacity = '0';
       }
     }
+    runAnimation();
   };
 
   document.getElementById('resetare').onclick = function () {
@@ -190,8 +190,9 @@ window.addEventListener('load', function () {
       produs.style.display = 'block';
       produs.parentElement.style.display = 'block';
     }
+    runAnimation();
   };
-
+  // etapa_6 8
   function sorteaza(semn) {
     var produse = document.getElementsByClassName('produs');
     let v_produse = Array.from(produse);
@@ -211,18 +212,19 @@ window.addEventListener('load', function () {
       }
       return semn * tipProdus_a.localeCompare(tipProdus_b);
     });
+
     for (let prod of v_produse) {
-      prod.parentNode.appendChild(prod);
+      prod.parentNode.parentNode.appendChild(prod.parentNode);
     }
   }
 
   document.getElementById('sortCrescTipProdus').onclick = function () {
-    console.log('sortCrescTipProdus');
     sorteaza(1);
+    runAnimation();
   };
   document.getElementById('sortDescrescTipProdus').onclick = function () {
-    console.log('sortDescrescTipProdus');
     sorteaza(-1);
+    runAnimation();
   };
 
   document.getElementById('calcTotal').addEventListener('click', function () {
