@@ -1,6 +1,18 @@
 {
   "oferte": [
     {
+      "categorie": "pentru mama",
+      "data-incepere": 1718828158819,
+      "data-finalizare": 1719432958819,
+      "reducere": 10
+    },
+    {
+      "categorie": "pentru 8 martie",
+      "data-incepere": 1718826676113,
+      "data-finalizare": 1719431476113,
+      "reducere": 10
+    },
+    {
       "categorie": "pentru aniversari",
       "data-incepere": 1718825435586,
       "data-finalizare": 1719430235586,

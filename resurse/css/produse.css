@@ -32,3 +32,13 @@
 .product-section {
   margin-bottom: 2rem;
 }
+
+#container-comparare {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+  border: 1px solid var(--culoare-secundara-1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  background: white;
+}
