@@ -172,7 +172,9 @@
                   <p><span class="nume_carac">Livrare astazi:</span> <time class="val-livrareAstazi"><%- livrareAzi%></time></p>
                   <p><span class="nume_carac">Tip produs:</span> <time class="val-tipProdus"><%- prod.tip_produs%></time></p>
                   <p><span class="nume_carac">Rezistenta zile:</span> <time class="val-rezistentaZile"><%- prod.rezistenta_zile%></time></p>
-                  <button type="button" class="btn btn-primary mt-4" id="compara-produs-<%- prod.id%>" data-prod='<%- JSON.stringify(prod) %>'>Compară</button>
+                  <span>
+                    <button type="button" class="btn btn-primary mt-4" id="compara-produs-<%- prod.id%>" data-prod='<%- JSON.stringify(prod) %>'>Compară</button>
+                  </span>
 
                 </div>
               </div>

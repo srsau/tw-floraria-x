@@ -116,11 +116,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
       if (found) {
         button.disabled = true;
+        button.parentNode.title = 'Aveti deja acest produs in comparator!';
       } else {
         button.disabled = false;
+        button.parentNode.title = '';
       }
       if (!found && produse.length === 2) {
         button.disabled = true;
+        button.parentNode.title = 'Aveti deja doua produse in comparator!';
       }
     });
   }
