@@ -59,9 +59,9 @@ class Utilizator {
   }
 
   set setareNume(nume) {
-    console.log({ nume });
-    if (this.checkName(nume)) this.nume = nume;
-    else {
+    if (this.checkName(nume)) {
+      this.nume = nume;
+    } else {
       throw new Error('Nume gresit');
     }
   }

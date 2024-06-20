@@ -21,14 +21,15 @@ function deleteCookie(name) {
 }
 
 function deleteAllCookies() {
-  document.cookie.split(';').forEach(function (c) {
-    document.cookie = c
-      .replace(/^ +/, '')
-      .replace(/=.*/, '=;expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/');
+  document.cookie.split(';').forEach(function (cookie) {
+    const cookieName = cookie.split('=')[0].trim();
+    document.cookie =
+      cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
   });
 }
 
 window.addEventListener('load', function () {
+  // deleteAllCookies();
   if (!getCookie('acceptedCookies')) {
     const banner = document.getElementById('banner');
     banner.style.visibility = 'visible';

@@ -16,6 +16,7 @@
   z-index: 9000;
 }
 
+/* etapa_7 cookie banner */
 @keyframes showBanner {
   from {
     opacity: 0;

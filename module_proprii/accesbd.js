@@ -94,7 +94,6 @@ class AccesBD {
     if (conditiiAnd.length > 0)
       conditieWhere = `where ${conditiiAnd.join(' and ')}`;
     let comanda = `select ${campuri.join(',')} from ${tabel} ${conditieWhere}`;
-    console.error(comanda);
     /*
         comanda=`select id, camp1, camp2 from tabel where camp1=$1 and camp2=$2;
         this.client.query(comanda,[val1, val2],callback)
@@ -134,7 +133,6 @@ class AccesBD {
     )}) values ( ${Object.values(campuri)
       .map((x) => `'${x}'`)
       .join(',')})`;
-    console.log(comanda);
     this.client.query(comanda, callback);
   }
 
@@ -158,7 +156,6 @@ class AccesBD {
     let comanda = `update ${tabel} set ${campuriActualizate.join(
       ', '
     )}  ${conditieWhere}`;
-    console.log(comanda);
     this.client.query(comanda, callback);
   }
 
@@ -178,7 +175,6 @@ class AccesBD {
     let comanda = `update ${tabel} set ${campuriActualizate.join(
       ', '
     )}  ${conditieWhere}`;
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111', comanda);
     this.client.query(comanda, valori, callback);
   }
 

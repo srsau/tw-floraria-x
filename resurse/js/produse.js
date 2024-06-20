@@ -66,9 +66,7 @@ const getInputValues = () => {
 window.addEventListener('load', function () {
   const produseInitiale = document.getElementsByClassName('produs');
 
-  // todo mem last page display it in main page
-
-  // task card
+  // etapa_7 task card
   const runAnimation = () => {
     const cards = document.querySelectorAll('.card');
     const t = 100;
@@ -266,25 +264,3 @@ window.addEventListener('load', function () {
     }, 2000);
   });
 });
-
-const lightModeColors = {
-  '--culoare-1': '#5930fa',
-  '--culoare-secundara-1': '#2f48fa',
-  '--culoare-secundara-2': '#9a2ffa',
-  '--culoare-secundara-3': '#2f88fa',
-  '--highlight': '#dc2ffa',
-  '--text': '#ffffff',
-  '--white': '#ffffff',
-  '--black': '#000000',
-};
-
-const darkModeColors = {
-  '--culoare-1': '#2e1a7f',
-  '--culoare-secundara-1': '#1823a3',
-  '--culoare-secundara-2': '#6b1ca3',
-  '--culoare-secundara-3': '#1c427a',
-  '--highlight': '#971ca3',
-  '--text': '#e0e0e0',
-  '--white': '#e0e0e0',
-  '--black': '#121212',
-};

@@ -27,7 +27,7 @@ const initialState: FormData = {
   fotografie: null,
 };
 
-const regexTelefon = /^[+]?[0-9]{1,4}[0-9]{10}$/;
+const regexTelefon = /^\+0[0-9]+$/;
 
 export const Register: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialState);
@@ -90,9 +90,8 @@ export const Register: React.FC = () => {
         dataNasterii: formData.dataNasterii,
         culoare: formData.culoare,
         telefon: formData.telefon,
-        fotografie: formData.fotografie ? formData.fotografie.name : null,
+        fotografie: formData.fotografie ?? null,
       };
-      console.log({ dataToSend });
 
       try {
         const response = await fetch('http://localhost:8000/inregistrare', {
@@ -109,7 +108,12 @@ export const Register: React.FC = () => {
           setSuccess(true);
         } else {
           const err = result?.error ?? 'A apărut o eroare.';
-          setError(err);
+          let suggestions = '\n Poti incerca unul dintre aceste usernameuri: ';
+          if (result?.suggestions) {
+            suggestions += result.suggestions.join(' sau ');
+            setError(err + '.' + suggestions);
+            return;
+          }
         }
       } catch (error) {
         setError('A apărut o eroare la trimiterea formularului.');
@@ -132,12 +136,19 @@ export const Register: React.FC = () => {
 
   return (
     <Container>
-      <h1>Registration Form</h1>
+      <h1>Inregistrare</h1>
       {success ? (
         <Alert variant="success">Un email de confirmare a fost trimis.</Alert>
       ) : (
         <>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {error && (
+            <Alert
+              variant="danger"
+              style={{ maxWidth: '300px', margin: 'auto' }}
+            >
+              {error}
+            </Alert>
+          )}
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="nume">
               <Form.Label>Nume</Form.Label>
@@ -229,7 +240,7 @@ export const Register: React.FC = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="mt-4">
               Submit
             </Button>
           </Form>

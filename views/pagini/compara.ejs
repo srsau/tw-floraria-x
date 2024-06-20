@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta name="keywords" content="flori, magazin flori, trandafiri, lalele, buchet de flori" />
+  <meta name="description" content="Comparator produse Floraria X" />
+
+  <title>Floraria X</title>
+  <%- include("../fragmente/head.ejs"); %>
+</head>
+
+<body>
+  <%- include("../fragmente/header.ejs"); %>
+
+  <body>
+    <div class="container mb-5">
+      <header class="py-5 text-center">
+        <h1 class="display-4">Comparator produse</h1>
+      </header>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Caracteristică</th>
+              <th scope="col">Produs 1</th>
+              <th scope="col">Produs 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Nume</th>
+              <td><%- locals.prod1Details.nume %></td>
+              <td><%- locals.prod2Details.nume %></td>
+            </tr>
+            <tr>
+              <th scope="row">Descriere</th>
+              <td><%- locals.prod1Details.descriere %></td>
+              <td><%- locals.prod2Details.descriere %></td>
+            </tr>
+            <tr>
+              <th scope="row">Pret</th>
+              <td><%- locals.prod1Details.pret %></td>
+              <td><%- locals.prod2Details.pret %></td>
+            </tr>
+            <tr>
+              <th scope="row">Rezistența Zile</th>
+              <td><%- locals.prod1Details.rezistenta_zile %></td>
+              <td><%- locals.prod2Details.rezistenta_zile %></td>
+            </tr>
+            <tr>
+              <th scope="row">Tip Produs</th>
+              <td><%- locals.prod1Details.tip_produs %></td>
+              <td><%- locals.prod2Details.tip_produs %></td>
+            </tr>
+            <tr>
+              <th scope="row">Culoare Predominantă</th>
+              <td><%- locals.prod1Details.culoare_predominanta %></td>
+              <td><%- locals.prod2Details.culoare_predominanta %></td>
+            </tr>
+            <tr>
+              <th scope="row">Categorie</th>
+              <td><%- locals.prod1Details.categorie %></td>
+              <td><%- locals.prod2Details.categorie %></td>
+            </tr>
+            <tr>
+              <th scope="row">Compoziție Buchet</th>
+              <td><%- locals.prod1Details?.compozitie_buchet?.join(', ') ?? '-' %></td>
+              <td><%- locals.prod2Details?.compozitie_buchet?.join(', ') ?? '-' %></td>
+            </tr>
+            <tr>
+              <th scope="row">Livrare Azi</th>
+              <td><%- locals.prod1Details.livrare_azi ? 'Da' : 'Nu' %></td>
+              <td><%- locals.prod2Details.livrare_azi ? 'Da' : 'Nu' %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <%- include("../fragmente/footer.ejs"); %>
+  </body>
+
+</html>

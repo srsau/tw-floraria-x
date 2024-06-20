@@ -23,6 +23,9 @@ const { galerieAnimata, initImagini } = require('./utils/imagini.js');
 const { initCompileazaScss, initBackup } = require('./utils/scss.js');
 const { catchAll } = require('./module_proprii/controller/all.js');
 const { InitOferta, getOfferData } = require('./module_proprii/oferte.js');
+const {
+  renderComparaPage,
+} = require('./module_proprii/controller/renderComparaPage.js');
 
 AccesBD.getInstanta();
 
@@ -41,7 +44,7 @@ initBackup();
 initError(); // etapa_4: 13
 initImagini();
 initCompileazaScss();
-InitOferta();
+// InitOferta(); //etapa_6 oferta bonus
 
 getOfferData();
 const app = express();
@@ -52,6 +55,9 @@ app.use(
     secret: 'abcdefg', //folosit de express session pentru criptarea id-ului de sesiune
     resave: true,
     saveUninitialized: false,
+    // cookie:{
+    //   maxAge:
+    // }
   })
 );
 
@@ -119,9 +125,15 @@ app.get('/produs/:id', async function (req, res) {
 
 app.get('/produse', renderProdusePage);
 
+app.get('/compara/:prod1/:prod2', renderComparaPage);
+
+app.get('/creeaza-buchet', function (req, res) {
+  res.render('pagini/creeaza-buchet.ejs');
+});
+
 app.get('/inregistrare', async function (req, res) {
   res.render('pagini/inregistrare.ejs', {
-    reactAppSrc: 'http://localhost:5173/',
+    reactAppSrc: '/react-app',
   });
 });
 
@@ -145,13 +157,12 @@ app.get('/*.ejs', function (req, res) {
 
 app.use(express.static(path.join(__dirname, 'react-app/dist')));
 
-app.get('/react-app', (req, res, next) => {
+app.get('/react-app', (req, res) => {
   if (req.headers.referer && req.headers.referer.includes('/inregistrare')) {
-    next();
+    res.sendFile(path.join(__dirname, 'react-app/dist', 'index.html'));
   } else {
     res.status(403).send('Access forbidden');
   }
-  // res.sendFile(path.join(__dirname, 'react-app/dist', 'index.html'));
 });
 
 // etapa_4: 9

@@ -41,7 +41,7 @@ async function renderProdusePage(req, res) {
       getConfig({ campuri: ['DISTINCT culoare_predominanta'] })
     ),
   ]);
-
+  // etapa_6 bonus 1
   const compozitii = compozitiiResult;
   const { rows } = maxMinPretResult;
   const zile = zileResult;

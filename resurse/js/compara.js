@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  // etapa_6: bonus comparator
   const container = document.createElement('div');
   container.id = 'container-comparare';
   container.style.display = 'none';
@@ -59,11 +60,13 @@ window.addEventListener('DOMContentLoaded', function () {
       container.style.display = 'none';
     }
     container.innerHTML = '';
+    const produseComparator = [];
     for (let i = 0; i < produse.length; i++) {
       if (i >= 2) {
         return;
       }
       const produs = produse[i];
+      produseComparator.push(produs.id);
       const detailsHTML = `
       <div class="mx-2">
           <div>
@@ -82,6 +85,9 @@ window.addEventListener('DOMContentLoaded', function () {
       </div>
   </div> `;
       container.innerHTML += detailsHTML;
+    }
+    if (produseComparator.length === 2) {
+      container.innerHTML += `<a class="btn btn-primary text-white" href="/compara/${produseComparator[0]}/${produseComparator[1]}" style="align-self:center;" >Afiseaza</a>`;
     }
 
     setTimeout(() => {

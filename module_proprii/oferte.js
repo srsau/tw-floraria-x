@@ -7,7 +7,7 @@ function getRandom(arr) {
   return arr[randomIndex];
 }
 
-const refresh_interval = 1000 * 60 * 60 * 24 * 7;
+const refresh_interval = 1000 * 60 * 1.5;
 const t2_interval = 1000 * 60 * 2; //2min
 
 const reduceri = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
@@ -79,7 +79,6 @@ const getOfferData = () => {
     if (filename) {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        console.log(getLatestOffer());
         obGlobal.lastOffer = getLatestOffer();
       }, 100);
     }

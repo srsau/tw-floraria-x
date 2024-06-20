@@ -1,6 +1,8 @@
+const formidable = require('formidable');
 const { afisareEroare } = require('../../utils/erori');
-const { getCategoriesOptions } = require('../produse_db');
+const AccesBD = require('../accesbd');
 const { Utilizator } = require('../utilizator');
+const path = require('path');
 
 async function inregistare_user(req, res) {
   var username;
@@ -9,7 +11,6 @@ async function inregistare_user(req, res) {
   //4
   console.log('Inregistrare:', req.body);
   var utilizNou = new Utilizator();
-  var eroare = '';
 
   utilizNou.culoare_chat = newUser.culoare;
   utilizNou.data_nasterii = newUser.dataNasterii;
@@ -21,19 +22,75 @@ async function inregistare_user(req, res) {
   utilizNou.setareUsername = newUser.username;
   utilizNou.telefon = newUser.telefon;
 
+  let registerError = '';
   Utilizator.getUtilizDupaUsername(
     newUser.username,
     {},
-    function (u, parametru, eroareUser) {
-      if (eroareUser == -1) {
+    async function (u, parametru, eroareUser) {
+      if (eroareUser === -1) {
+        if (!newUser.prenume || newUser.prenume.length < 3) {
+          registerError = 'Prenumele trebuie să fie mai mare de 2 caractere.';
+        }
+        if (!newUser.parola) {
+          registerError = 'Parola este obligatorie.';
+        }
+        if (newUser.parola !== newUser.confirmaParola) {
+          registerError = 'Parola și confirmarea parolei nu se potrivesc.';
+        }
+        if (!newUser.email) {
+          registerError = 'Email-ul este obligatoriu.';
+        }
+        const regexTelefon = /^\+0[0-9]+$/;
+        if (newUser.telefon && !regexTelefon.test(newUser.telefon)) {
+          registerError = 'Formatul numărului de telefon este invalid.';
+        }
+
+        if (registerError) {
+          return registerError;
+        }
+
         utilizNou.salvareUtilizator();
-      } else {
-        eroare += 'Username deja existent';
+        return res
+          .status(200)
+          .json({ message: 'Utilizator salvat cu succes.' });
       }
-      if (eroare) {
-        res.status(400).json({ error: eroare });
-      } else {
-        res.status(200);
+
+      let eroare = '';
+      if (eroareUser !== -1) {
+        eroare = 'Username deja existent';
+      }
+
+      if (eroare === 'Username deja existent') {
+        const getRandomValue = (base) =>
+          `${base}${Math.random().toString(36).substring(2, 8)}`;
+
+        const generateUniqueUsername = async (base) => {
+          let newUsername;
+          let isUnique = false;
+          do {
+            newUsername = getRandomValue(base);
+            const result = await AccesBD.getInstanta().selectAsync({
+              tabel: 'utilizatori',
+              campuri: ['id'],
+              conditiiAnd: [`username='${newUsername}'`],
+            });
+            if (result.rows.length === 0) {
+              isUnique = true;
+            }
+          } while (!isUnique);
+
+          return newUsername;
+        };
+
+        const uniqueUsernames = await Promise.all([
+          generateUniqueUsername(newUser.username),
+          generateUniqueUsername(newUser.username),
+        ]);
+
+        return res.status(400).json({
+          error: eroare,
+          suggestions: uniqueUsernames,
+        });
       }
     }
   );
@@ -120,7 +177,7 @@ async function login_user(req, res) {
 function logout_user(req, res) {
   req.session.destroy();
   res.locals.utilizator = null;
-  res.render('pagini/logout');
+  res.redirect('/index');
 }
 
 module.exports = { inregistare_user, confirma_cod, login_user, logout_user };

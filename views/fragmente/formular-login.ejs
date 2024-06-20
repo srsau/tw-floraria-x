@@ -14,6 +14,16 @@
     <p><input type="submit" value="Logare" class="btn btn-primary btn-sm"></p>
     <button class="btn btn-secondary btn-sm" onclick="event.preventDefault(); window.location.href='/inregistrare';">Inregistrare</button>
   </form>
-  <% }  %>
+  <% }   else { %>
+  <div>
+    <p class="mt-1">
+      <span>
+        Buna ziua, <%= locals.utilizator.username %>!
+      </span>
+
+      <a href="/logout">Logout</a>
+    </p>
+  </div>
+  <% } %>
   <p><%- locals.mesajLogin %></p>
 </div>
